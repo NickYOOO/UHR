@@ -2,10 +2,11 @@ import { styled } from 'styled-components';
 
 export const HeaderContainer = styled.div`
   display: flex;
-  padding: 15px;
   justify-content: space-between;
+  box-sizing: border-box;
   width: 100%;
   height: 80px;
+  padding: 15px;
   background-color: #082141;
 `;
 
@@ -15,9 +16,10 @@ export const TitleContainer = styled.div`
   align-items: center;
 
   & > h1 {
-    color: #fff;
     font-size: 24px;
+    color: #fff;
   }
+
   & > img {
     width: 58px;
     height: 58px;
@@ -29,16 +31,16 @@ export const TitleContainer = styled.div`
 export const UserContainer = styled.div`
   display: flex;
   align-items: center;
+
   & > a {
     color: #fff;
-    font-size: 16px;
+    outline: inherit;
+    text-decoration: none;
+    padding: 0 20px;
     background: none;
     border: none;
-    padding: 0;
+    font-size: 16px;
     cursor: pointer;
-    outline: inherit;
-    padding: 0 20px;
-    text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
