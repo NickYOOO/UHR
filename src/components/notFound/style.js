@@ -23,12 +23,12 @@ export const FullPage = styled.div`
     color: #fff;
   }
 
-  @keyframes fadeout {
+  /* @keyframes fadeout {
     0% {
       opacity: 1;
     }
     100% {
       opacity: 0;
     }
-  }
+  } */
 `;
