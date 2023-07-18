@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeaderContainer = styled.header`
+export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   background-color: #082141;
 `;
 
-export const TitleContainer = styled.div`
+export const TitleBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ export const TitleContainer = styled.div`
   }
 `;
 
-export const UserContainer = styled.div`
+export const UserBox = styled.div`
   display: flex;
   align-items: center;
 

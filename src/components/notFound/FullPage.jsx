@@ -8,10 +8,10 @@ function FullPage() {
   setTimeout(goBack, 4 * 1000);
 
   return (
-    <Styled.FullPage onClick={goBack}>
+    <Styled.FullPageBox onClick={goBack}>
       <h2>알 수 없는 페이지 요청입니다.</h2>
       <h3>메인페이지로 이동 합니다.</h3>
-    </Styled.FullPage>
+    </Styled.FullPageBox>
   );
 }
 

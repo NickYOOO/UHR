@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import BackgroundImg from '../../assets/img/404Img.png';
 
-export const FullPage = styled.div`
+export const FullPageBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
