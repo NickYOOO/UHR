@@ -20,6 +20,8 @@
   - detail
   - comment
   - common
+  - header
+  - footer
 
 ---
 

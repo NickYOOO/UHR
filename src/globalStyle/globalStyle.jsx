@@ -4,6 +4,9 @@ import '../assets/font/font.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset};
+  *{
+    box-sizing: border-box;
+  }
   h1 {
     font-family: 'didimmyungjo050';
   }
