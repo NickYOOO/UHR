@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
