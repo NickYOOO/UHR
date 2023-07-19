@@ -1,16 +1,20 @@
 import React from 'react';
-import { FooterContainer, FooterIcons } from './style';
+import * as Styled from './style';
 import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiNotion } from 'react-icons/si';
 
 function Footer() {
+  //****** 지완:  404 page footer 숨기기
+  // Q: 와일드카드 문자로 이루어진 경로에서는 적용 되지 않음 ... 방법이 있을까?
+  if (window.location.pathname === '/*') return null;
+
   return (
-    <FooterContainer>
+    <Styled.FooterLayout>
       <p>SpartaCodingClub</p>
       <p>유지완, 노진철, 최윤서, 임지영, 전수정</p>
       <p> &copy; 2023 5MyGod! All rights reserved</p>
 
-      <FooterIcons>
+      <Styled.FooterBox>
         <a href="https://github.com/NickYOOO/UHR">
           <FaGithub size="35" color="#ffffff" />
         </a>
@@ -20,8 +24,8 @@ function Footer() {
         <a href="https://www.notion.so/5-5-my-god-f05ebaf396004eaaada436eceb0e030c?pvs=4">
           <SiNotion size="35" color="#ffffff" />
         </a>
-      </FooterIcons>
-    </FooterContainer>
+      </Styled.FooterBox>
+    </Styled.FooterLayout>
   );
 }
 

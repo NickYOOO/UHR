@@ -1,9 +1,8 @@
 import { styled } from 'styled-components';
 
-const FooterContainer = styled.div`
+export const FooterLayout = styled.div`
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   align-items: center;
   width: 100%;
   height: 300px;
@@ -17,7 +16,7 @@ const FooterContainer = styled.div`
   }
 `;
 
-const FooterIcons = styled.div`
+export const FooterBox = styled.div`
   display: inline-flex;
   margin-top: 20px;
   gap: 20px;
@@ -27,5 +26,3 @@ const FooterIcons = styled.div`
     cursor: pointer;
   }
 `;
-
-export { FooterContainer, FooterIcons };

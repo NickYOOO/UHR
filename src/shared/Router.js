@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
-import DetailPage from '../pages/DetailPage';
-import ListPage from '../pages/ListPage';
-import Main from '../pages/Main';
-import NotFoundPage from '../pages/NotFoundPage';
+import Footer from '../components/footer/Footer';
 import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
 import MyPage from '../pages/MyPage';
+import Main from '../pages/Main';
+import ListPage from '../pages/ListPage';
+import DetailPage from '../pages/DetailPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import Loading from '../components/loading/Loading';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
       <Footer />
     </BrowserRouter>

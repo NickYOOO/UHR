@@ -20,12 +20,12 @@ function Header() {
   };
 
   return (
-    <Styled.HeaderContainer>
-      <Styled.TitleContainer onClick={() => navigate('/')}>
-        <img src={Logo} />
+    <Styled.Header>
+      <Styled.TitleBox onClick={() => navigate('/')}>
+        <img src={Logo} alt="logo image" />
         <h1>당신의 문화유산 답사기</h1>
-      </Styled.TitleContainer>
-      <Styled.UserContainer>
+      </Styled.TitleBox>
+      <Styled.UserBox>
         {isLoggedIn ? (
           <>
             <Link to={`/detail/:id`}>르탄님</Link>
@@ -39,8 +39,8 @@ function Header() {
             <Link to={`/signup`}>회원가입</Link>
           </>
         )}
-      </Styled.UserContainer>
-    </Styled.HeaderContainer>
+      </Styled.UserBox>
+    </Styled.Header>
   );
 }
 
