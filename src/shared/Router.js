@@ -9,6 +9,7 @@ import Main from '../pages/Main';
 import ListPage from '../pages/ListPage';
 import DetailPage from '../pages/DetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import Loading from '../components/loading/Loading';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/loading" element={<Loading />} />
       </Routes>
       <Footer />
     </BrowserRouter>
