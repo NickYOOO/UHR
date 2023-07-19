@@ -4,6 +4,10 @@ import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiNotion } from 'react-icons/si';
 
 function Footer() {
+  //****** 지완:  404 page footer 숨기기
+  // Q: 와일드카드 문자로 이루어진 경로에서는 적용 되지 않음 ... 방법이 있을까?
+  if (window.location.pathname === '/*') return null;
+
   return (
     <FooterContainer>
       <p>SpartaCodingClub</p>
