@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const InputBox = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 
   & label {
     margin-right: 5px;
