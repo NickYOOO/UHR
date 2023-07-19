@@ -68,3 +68,20 @@ export const MainBannerSection = styled.section`
     }
   }
 `;
+
+export const SearchPositionBox = styled.div`
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  transition: top 0.4s;
+
+  @media screen and (max-width: 992px) {
+    top: 42%;
+  }
+
+  @media screen and (max-width: 576px) {
+    top: 32%;
+  }
+`;
