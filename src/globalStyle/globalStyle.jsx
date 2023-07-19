@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
   h1 {
     font-family: 'didimmyungjo050';
   }
+  th,
   h2,
   h3,
   h4,
@@ -18,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'omnigothic030';
   }
   p,
+  tr,
   span {
     font-family: 'omnigothic020';
   }
