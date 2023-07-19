@@ -93,19 +93,19 @@ const CommentCell = styled.td`
 const MyPageLayout = () => {
   const comments = [
     {
-      heritageName: '서울 숭례문(서울 崇禮門)',
-      comment: '서울 숭례문(서울 崇禮門)',
-      date: '2023. 7. 17. 오후 1:12:30',
+      ccbaMnm1: '서울 숭례문(서울 崇禮門)',
+      comments: '서울 숭례문(서울 崇禮門)',
+      originTime: '2023. 7. 17. 오후 1:12:30',
     },
     {
-      heritageName: '서울 숭례문(서울 崇禮門)',
-      comment: '서울 숭례문(서울 崇禮門)',
-      date: '2023. 7. 17. 오후 1:12:30',
+      ccbaMnm1: '서울 숭례문(서울 崇禮門)',
+      comments: '서울 숭례문(서울 崇禮門)',
+      originTime: '2023. 7. 17. 오후 1:12:30',
     },
     {
-      heritageName: '서울 숭례문(서울 崇禮門)',
-      comment: '서울 숭례문(서울 崇禮門)',
-      date: '2023. 7. 17. 오후 1:12:30',
+      ccbaMnm1: '서울 숭례문(서울 崇禮門)',
+      comments: '서울 숭례문(서울 崇禮門)',
+      originTime: '2023. 7. 17. 오후 1:12:30',
     },
   ];
 
@@ -129,9 +129,9 @@ const MyPageLayout = () => {
         <tbody>
           {comments.map((comment, index) => (
             <CommentRow key={index}>
-              <CommentCell>{comment.heritageName}</CommentCell>
-              <CommentCell>{comment.comment}</CommentCell>
-              <CommentCell>{comment.date}</CommentCell>
+              <CommentCell>{comment.ccbaMnm1}</CommentCell>
+              <CommentCell>{comment.comments}</CommentCell>
+              <CommentCell>{comment.originTime}</CommentCell>
             </CommentRow>
           ))}
         </tbody>

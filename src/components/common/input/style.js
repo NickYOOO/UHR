@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const InputBox = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 
   & label {
     margin-right: 5px;
@@ -19,7 +20,7 @@ export const InputBox = styled.div`
     flex: 1 0 auto;
     padding: 4px 8px;
     border: 1px solid #bdbdbd;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
 
     &:focus,

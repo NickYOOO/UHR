@@ -21,8 +21,6 @@ export const SelectBox = styled.div`
   }
 `;
 
-export const SelectSection = styled.div``;
-
 export const SelectButton = styled.button`
   display: flex;
   justify-content: space-between;

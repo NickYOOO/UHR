@@ -1,7 +1,8 @@
 import React from 'react';
+import HeritageDetail from '../components/heritageDetail/HeritageDetail';
 
 function DetailPage() {
-  return <div>DetailPage</div>;
+  return <HeritageDetail />;
 }
 
 export default DetailPage;

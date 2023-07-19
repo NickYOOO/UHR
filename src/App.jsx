@@ -4,6 +4,8 @@ import GlobalStyles from './globalStyle/globalStyle';
 import './assets/font/font.css';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import store from './redux/config/configStore';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,9 +16,11 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <GlobalStyles />
-      <Router />
+      <Provider store={store}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <GlobalStyles />
+        <Router />
+      </Provider>
     </QueryClientProvider>
   );
 };
