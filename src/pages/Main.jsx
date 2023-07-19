@@ -1,8 +1,7 @@
 import React from 'react';
-import Select from '../components/common/select/Select';
 
 function Main() {
-  return <Select />;
+  return <div>Main</div>;
 }
 
 export default Main;
