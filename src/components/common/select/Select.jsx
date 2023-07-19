@@ -360,7 +360,7 @@ function Select() {
     <Styled.SelectLayout>
       <Styled.SelectBox>
         <label htmlFor="provinceSelect">지역</label>
-        <Styled.SelectSection>
+        <div>
           <Styled.SelectButton id="provinceSelect" type="button" onClick={provinceToggleOptions}>
             {selectedProvinceOption}
             <BiSolidDownArrow size="20" color="#000000" />
@@ -376,12 +376,12 @@ function Select() {
               </Styled.SelectItem>
             ))}
           </Styled.SelectList>
-        </Styled.SelectSection>
+        </div>
       </Styled.SelectBox>
 
       <Styled.SelectBox>
         <label htmlFor="regionSelect">시/군/구</label>
-        <Styled.SelectSection>
+        <div>
           <Styled.SelectButton id="regionSelect" type="button" onClick={regionToggleOptions}>
             {selectedRegionOption}
             <BiSolidDownArrow size="20" color="#000000" />
@@ -393,7 +393,7 @@ function Select() {
               </Styled.SelectItem>
             ))}
           </Styled.SelectList>
-        </Styled.SelectSection>
+        </div>
       </Styled.SelectBox>
     </Styled.SelectLayout>
   );
