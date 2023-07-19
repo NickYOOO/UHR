@@ -1,10 +1,11 @@
 import React from 'react';
 import Youtube from '../components/youtube/Youtube';
+import MainBanner from '../components/mainBanner/MainBanner';
 
 function Main() {
   return (
     <div>
-      Main
+      <MainBanner />
       <Youtube />
     </div>
   );
