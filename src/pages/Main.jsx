@@ -1,13 +1,15 @@
 import React from 'react';
+import Carousel from '../components/carousel/Carousel';
 import Youtube from '../components/youtube/Youtube';
 import MainBanner from '../components/mainBanner/MainBanner';
 
 function Main() {
   return (
-    <div>
+    <main>
       <MainBanner />
+      <Carousel />
       <Youtube />
-    </div>
+    </main>
   );
 }
 
