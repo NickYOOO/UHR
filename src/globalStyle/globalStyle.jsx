@@ -20,7 +20,8 @@ const GlobalStyles = createGlobalStyle`
   }
   p,
   tr,
-  span {
+  span,
+  a {
     font-family: 'omnigothic020';
   }
 `;
