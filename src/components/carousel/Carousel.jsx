@@ -82,10 +82,10 @@ const Carousel = () => {
           heritages.map((item, i) => {
             return (
               <SwiperSlide key={shortid.generate()} onClick={() => goToDetail(item)}>
-                <figure>
-                  <img src={imgUrl[i]} alt={item[4].value} />
-                  <figcaption>{item[4].value}</figcaption>
-                </figure>
+                <Styled.Figure>
+                  <Styled.FigureImg src={imgUrl[i]} alt={item[4].value} />
+                  <Styled.FigureCaption>{item[4].value}</Styled.FigureCaption>
+                </Styled.Figure>
               </SwiperSlide>
             );
           })}
