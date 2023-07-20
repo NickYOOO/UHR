@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const MainBoxLayout = styled.div`
@@ -108,6 +108,10 @@ const MyPageLayout = () => {
       originTime: '2023. 7. 17. 오후 1:12:30',
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <MainBoxLayout>

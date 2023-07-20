@@ -3,15 +3,15 @@ import * as Style from './style';
 import { v4 as uuidv4 } from 'uuid';
 import { auth } from '../../../api/firebase';
 
-const CommentForm = () => {
+const CommentForm = ({ hId }) => {
   const [comment, setComment] = useState('');
-
+  // console.log(hId)
   const handleSubmit = async () => {
     const uniqueId = uuidv4();
 
     const newComment = {
       id: uniqueId,
-      // hId: '문화재연계번호',
+      hId,
       user: auth.currentUser.uid,
       content: comment,
       originTime: new Date().toISOString(),
