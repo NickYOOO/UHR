@@ -52,7 +52,7 @@ function HeritageDetail() {
             <tr>
               <th>문화재분류</th>
               <td>
-                {information[4].value} / {information[5].value} / {information[6].value} /
+                {information[4].value} / {information[5].value} / {information[6].value} /&nbsp;
                 {information[7].value}
               </td>
             </tr>
