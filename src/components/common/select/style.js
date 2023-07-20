@@ -2,7 +2,10 @@ import { styled } from 'styled-components';
 
 export const SelectLayout = styled.div`
   display: flex;
-  background-color: rgba(8, 33, 65, 0.55);
+
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+  }
 `;
 
 export const SelectBox = styled.div`
@@ -21,6 +24,7 @@ export const SelectBox = styled.div`
 export const SelectButton = styled.button`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 130px;
   padding: 4px;
   border: none;
@@ -39,7 +43,6 @@ export const SelectList = styled.ul`
   display: none;
   width: 130px;
   margin-top: 2px;
-  /* border: 1pxs; */
   border-radius: 4px;
   z-index: 2;
 
