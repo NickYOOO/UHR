@@ -6,14 +6,14 @@ import './style.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { getHeritageImages, getHeritages } from '../../api/heritage';
+import { getHeritageImages, getTopTenHeritages } from '../../api/heritage';
 import shortid from 'shortid';
 import { useNavigate } from 'react-router-dom';
 
 const Carousel = () => {
   const navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);
-  const { data: heritages, isLoading } = useQuery(['carousel'], getHeritages, {
+  const { data: heritages, isLoading } = useQuery(['carousel'], getTopTenHeritages, {
     select: ({ children }) => {
       const items = children
         .filter(item => {
@@ -44,7 +44,9 @@ const Carousel = () => {
 
   const goToDetail = item => {
     const id = item[13].value;
-    navigate(`/detail/${id}`);
+    navigate(`/detail/${id}`, {
+      state: { ccbaKdcd: item[9].value, ccbaCtcd: item[10].value, ccbaAsno: item[11].value },
+    });
   };
 
   if (isLoading || imgIsLoading) {

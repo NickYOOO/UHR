@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputWithLabel from '../components/common/input/InputWithLabel';
 import Button from '../components/common/Button';
 import { styled } from 'styled-components';
@@ -25,6 +25,10 @@ function SignInPage() {
     event.preventDefault();
     await signInWithFB(email, password);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <SignInLayout>

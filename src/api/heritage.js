@@ -5,7 +5,7 @@ const LIST_URL = 'http://www.cha.go.kr/cha/SearchKindOpenapiList.do';
 const IMG_URL = 'http://www.cha.go.kr/cha/SearchImageOpenapi.do';
 const INFO_URL = 'http://www.cha.go.kr/cha/SearchKindOpenapiDt.do';
 
-export const getHeritages = async () => {
+export const getTopTenHeritages = async () => {
   const res = await axios.get(`${LIST_URL}`);
   const item = new XMLParser().parseFromString(res.data);
   return item;
@@ -16,7 +16,13 @@ export const getHeritageInfo = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
     `${INFO_URL}?ccbaKdcd=${ccbaKdcd}&ccbaCtcd=${ccbaCtcd}&ccbaAsno=${ccbaAsno}`
   );
   const item = new XMLParser().parseFromString(res.data);
-  return item;
+  const infoHead = item.children.slice(0, 6);
+  const infoBody = item.children
+    .slice(6)
+    .map(item => item.children)[0]
+    .map(item => ({ ...item, value: item.value.replace(/ >/g, '') }));
+  const info = { infoHead, infoBody };
+  return info;
 };
 
 export const getHeritageImages = async param => {

@@ -1,34 +1,8 @@
 import React from 'react';
 import * as Style from './style';
-import { useQuery } from '@tanstack/react-query';
-import { getHeritageInfo } from '../../api/heritage';
-import Loading from '../loading/Loading';
 
-function HeritageDetail() {
-  const params = { ccbaKdcd: '11', ccbaCtcd: '11', ccbaAsno: '00030000' };
-
-  function removeSymbolFromValue(dataArray) {
-    return dataArray.map(item => ({
-      ...item,
-      value: item.value.replace(/ >/g, ''),
-    }));
-  }
-
-  const { data: information, isLoading } = useQuery(['detail'], () => getHeritageInfo(params), {
-    select: ({ children }) => {
-      const items = children
-        .filter(item => {
-          return item.name === 'item';
-        })
-        .map(item => item.children);
-      return removeSymbolFromValue(items[0]);
-    },
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
+function HeritageDetail({ information }) {
+  
   return (
     <Style.HeritageDetailLayout>
       <Style.HeritageDetailBox>

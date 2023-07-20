@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as Style from './style';
 import { v4 as uuidv4 } from 'uuid';
+import { auth } from '../../../api/firebase';
 
-const CommentForm = () => {
+const CommentForm = ({ hId }) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
 
@@ -18,7 +19,9 @@ const CommentForm = () => {
       }
       const data = await response.json();
       setComments(data);
-    } catch (error) {}
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
   };
 
   const handleSubmit = async () => {
@@ -26,6 +29,8 @@ const CommentForm = () => {
 
     const newComment = {
       id: uniqueId,
+      hId,
+      user: auth.currentUser ? auth.currentUser.uid : null,
       content: comment,
       originTime: new Date().toISOString(),
       modifyTime: new Date().toISOString(),

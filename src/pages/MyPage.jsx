@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { auth, getUserInfo } from '../api/firebase';
 
 const MainBoxLayout = styled.div`
   max-width: 1200px;
@@ -91,6 +92,9 @@ const CommentCell = styled.td`
 `;
 
 const MyPageLayout = () => {
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
   const comments = [
     {
       ccbaMnm1: '서울 숭례문(서울 崇禮門)',
@@ -109,12 +113,25 @@ const MyPageLayout = () => {
     },
   ];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    getUserInfo(auth.currentUser?.email)
+      .then(info => {
+        setUserName(info.displayName);
+        setUserEmail(info.email);
+      })
+      .catch(error => {
+        console.log('오류: ', error);
+      });
+  });
+
   return (
     <MainBoxLayout>
       <UserInfoBox>내 정보</UserInfoBox>
       <InfoContainer>
-        <div>르탄이</div>
-        <div>test@test.com</div>
+        <div>{userName}</div>
+        <div>{userEmail}</div>
       </InfoContainer>
       <Separator />
       <CommentTitle>작성한 댓글</CommentTitle>
