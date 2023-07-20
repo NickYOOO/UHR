@@ -8,9 +8,13 @@ export const HeritageDetailLayout = styled.div`
 
 export const HeritageDetailBox = styled.div`
   display: flex;
-
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const HeritageImage = styled.img`
@@ -36,6 +40,10 @@ export const HeritageDetailTable = styled.table`
 
   th {
     width: 120px;
+  }
+
+  @media screen and (max-width: 580px) {
+    width: 350px;
   }
 `;
 

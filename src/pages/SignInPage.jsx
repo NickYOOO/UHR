@@ -62,7 +62,7 @@ const SignInLayout = styled.div`
   height: 560px;
   margin: 90px auto;
   border-radius: 16px;
-  background-color: rgba(8, 33, 65, 0.05);
+  background-color: #08214110;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
