@@ -4,11 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../loading/Loading';
 import * as Style from './style';
 
-function HeritageImages() {
+function HeritageImages({ ccbaKdcd, ccbaCtcd, ccbaAsno }) {
   const params = {
-    ccbaKdcd: '11',
-    ccbaCtcd: '11',
-    ccbaAsno: '00030000',
+    ccbaKdcd,
+    ccbaCtcd,
+    ccbaAsno,
   };
 
   const { data: images, isLoading } = useQuery(
