@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Style from './style';
 import { v4 as uuidv4 } from 'uuid';
+import { auth } from '../../../api/firebase';
 
 const CommentForm = ({ hId }) => {
   const [comment, setComment] = useState('');
@@ -11,7 +12,7 @@ const CommentForm = ({ hId }) => {
     const newComment = {
       id: uniqueId,
       hId,
-      // user: '작성자uid',
+      user: auth.currentUser.uid,
       content: comment,
       originTime: new Date().toISOString(),
       modifyTime: new Date().toISOString(),
