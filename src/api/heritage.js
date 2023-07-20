@@ -39,6 +39,7 @@ export const getHeritagesBySearch = async params => {
   const res = await axios.get(`${LIST_URL}?${params}`);
   const item = new XMLParser().parseFromString(res.data);
   return item.children;
+};
 
 export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
   const result = [];
