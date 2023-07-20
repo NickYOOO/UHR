@@ -1,16 +1,10 @@
 {
-  "todos": [
+  "comments": [
     {
-      "id": 1,
-      "title": "할일 1",
-      "contents": "리액트 공부",
-      "isDone": false
-    },
-    {
-      "id": 2,
-      "title": "할일2",
-      "contents": "스프링 공부",
-      "isDone": true
+      "id": "ce299fba-bbd1-4a30-b7b1-e451fe8c8e2a",
+      "content": "댓글 작성 잘 되나?",
+      "originTime": "2023-07-20T04:49:52.238Z",
+      "modifyTime": "2023-07-20T04:49:52.238Z"
     }
   ]
 }
