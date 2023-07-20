@@ -1,18 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Map, MapMarker, Marker } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, MapTypeControl, Marker, ZoomControl } from 'react-kakao-maps-sdk';
 import * as Style from './style';
 
-const KakaoMap = () => {
+const KakaoMap = ({ latitude, longitude }) => {
+  const lat = latitude;
+  const lng = longitude;
   const [isOpen, setIsOpen] = useState(false);
   const [center, setCenter] = useState({
-    center: { lat: 37.559975221378, lng: 126.975312652739 },
+    center: { lat, lng },
     isPanto: false,
   });
 
   useEffect(() => {
     const resizeCenter = () => {
       setCenter({
-        center: { lat: 37.559975221378, lng: 126.975312652739 },
+        center: { lat, lng },
         isPanto: false,
       });
     };
@@ -28,6 +30,7 @@ const KakaoMap = () => {
       center={center.center}
       isPanto={center.isPanto}
       style={{ width: '100%', height: '360px' }}
+      zoomable={false}
       onCenterChanged={map =>
         setCenter({
           level: map.getLevel(),
@@ -38,8 +41,10 @@ const KakaoMap = () => {
         })
       }
     >
+      <ZoomControl position={window.kakao.maps.ControlPosition.BOTTOMRIGHT} />
+      <MapTypeControl position={window.kakao.maps.ControlPosition.TOPRIGHT} />
       <MapMarker
-        position={{ lat: 37.559975221378, lng: 126.975312652739 }}
+        position={{ lat, lng }}
         onMouseOver={() => setIsOpen(true)}
         onMouseOut={() => setIsOpen(false)}
       >
