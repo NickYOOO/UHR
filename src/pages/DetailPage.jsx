@@ -4,7 +4,6 @@ import HeritageDetail from '../components/heritageDetail/HeritageDetail';
 import HeritageImages from '../components/heritageImages/HeritageImages';
 import CommentForm from '../components/comments/commentForm/CommentForm';
 import KakaoMap from '../components/kakaoMap/KakaoMap';
-import CommentList from '../components/comments/commentList/CommentList';
 
 const MainBoxLayout = styled.div`
   max-width: 1200px;
@@ -19,7 +18,6 @@ function DetailPage() {
       <KakaoMap latitude={37.559975221378} longitude={126.975312652739} />
       <HeritageImages />
       <CommentForm />
-      <CommentList />
     </MainBoxLayout>
   );
 }
