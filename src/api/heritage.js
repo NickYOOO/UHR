@@ -33,17 +33,22 @@ export const getHeritageImages = async param => {
   return result;
 };
 
-// export const getHeritageImg = async param => {
-//   const result = {};
-//   const res = await axios.get(
-//     `${IMG_URL}?ccbaKdcd=${ccbaKdcd}&ccbaCtcd=${ccbaCtcd}&ccbaAsno=${ccbaAsno}`
-//   );
-// };
-
 export const getHeritagesBySearch = async params => {
   // ?ccbaCtcd=도시코드&ccbaLcto=시군구코드&ccbaMnm1=문화재국문명
   // ?ccbaCtcd=11&ccbaLcto=11&ccbaMnm1=원각사지
   const res = await axios.get(`${LIST_URL}?${params}`);
   const item = new XMLParser().parseFromString(res.data);
   return item.children;
+
+export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
+  const result = [];
+  const res = await axios.get(
+    `${IMG_URL}?ccbaKdcd=${ccbaKdcd}&ccbaCtcd=${ccbaCtcd}&ccbaAsno=${ccbaAsno}`
+  );
+  const item = new XMLParser().parseFromString(res.data);
+  const img = item.children[6].children.filter(a => a.name === 'imageUrl').slice(0, 9);
+  img.forEach(image => {
+    result.push(image.value);
+  });
+  return result;
 };
