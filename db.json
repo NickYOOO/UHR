@@ -1,16 +1,24 @@
 {
-  "todos": [
+  "comments": [
     {
-      "id": 1,
-      "title": "할일 1",
-      "contents": "리액트 공부",
-      "isDone": false
+      "content": "댓글 적혔너ㅏ요?",
+      "timestamp": "2023-07-20T04:03:49.723Z",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "할일2",
-      "contents": "스프링 공부",
-      "isDone": true
+      "content": "아 됐다 오케이",
+      "timestamp": "2023-07-20T04:03:59.040Z",
+      "id": 2
+    },
+    {
+      "content": "댓글 작성 되냐고",
+      "timestamp": "2023-07-20T04:10:47.195Z",
+      "id": 3
+    },
+    {
+      "content": "밥 먹고 불러오기 할거임!!",
+      "timestamp": "2023-07-20T04:17:46.631Z",
+      "id": 4
     }
   ]
 }
