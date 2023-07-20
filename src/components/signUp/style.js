@@ -12,6 +12,9 @@ export const SignUpContainer = styled.div`
 `;
 
 export const SignUpBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   & > h2 {
     display: flex;
     justify-content: center;
@@ -35,15 +38,21 @@ export const SignUpBox = styled.div`
   }
 `;
 
-export const SignUpForm = styled.div`
+export const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  margin: 40px 0 30px 0;
+  gap: 8px;
   width: 430px;
-  padding: 0px 30px 0px 30px;
+  padding: 0px 20px 0px 20px;
 `;
 
-export const InputWithLabel = styled.input`
-  border-radius: 10px;
+export const ValidationMessage = styled.p`
+  height: 16px;
+  font-size: 14px;
+  color: ${({ isValid }) => (isValid ? 'green' : 'red')};
+`;
+export const ButtonArea = styled.div`
+  margin-top: 32px;
 `;
