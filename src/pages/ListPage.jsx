@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { getHeritagesBySearch } from '../api/heritage';
 import { useQuery } from '@tanstack/react-query';
@@ -17,6 +17,10 @@ const ListPage = () => {
   const { data, isLoading, isSuccess, isError } = useQuery({
     queryKey: ['heritageListBySearch'],
     queryFn: () => getHeritagesBySearch(params),
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   });
 
   if (isLoading) {
