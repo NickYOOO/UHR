@@ -33,26 +33,3 @@
   color: #222;
   font-size: 20px;
 }
-
-.swiper-slide figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 226px;
-}
-
-.swiper-slide img {
-  object-fit: cover;
-  width: 100%;
-  height: 200px;
-}
-
-.swiper-slide figcaption {
-  font-size: 15px;
-  font-family: 'omnigothic020';
-  padding-top: 10px;
-  line-height: 1.4;
-  word-break: keep-all;
-}

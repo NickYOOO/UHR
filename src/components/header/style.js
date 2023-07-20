@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
 
 export const Header = styled.header`
+  position: fixed;
+  left: 0;
+  top: 0;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -8,6 +11,7 @@ export const Header = styled.header`
   height: 80px;
   padding: 15px;
   background-color: #082141;
+  z-index: 999;
 `;
 
 export const TitleBox = styled.div`
@@ -18,11 +22,15 @@ export const TitleBox = styled.div`
   & > h1 {
     font-size: 24px;
     color: #fff;
+
+    @media screen and (max-width: 576px) {
+      display: none;
+    }
   }
 
   & > img {
-    width: 58px;
-    height: 58px;
+    width: 48px;
+    height: 48px;
     margin-right: 24px;
     cursor: pointer;
   }

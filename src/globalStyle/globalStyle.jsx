@@ -7,6 +7,9 @@ const GlobalStyles = createGlobalStyle`
   *{
     box-sizing: border-box;
   }
+  body {
+    padding-top: 80px;
+  }
   h1 {
     font-family: 'didimmyungjo050';
   }
@@ -20,7 +23,8 @@ const GlobalStyles = createGlobalStyle`
   }
   p,
   tr,
-  span {
+  span,
+  a {
     font-family: 'omnigothic020';
   }
 `;
