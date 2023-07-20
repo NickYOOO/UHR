@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import HeritageDetail from '../components/heritageDetail/HeritageDetail';
 import HeritageImages from '../components/heritageImages/HeritageImages';
-import CommentForm from '../components/comments/commenForm/CommentForm';
+import CommentForm from '../components/comments/commentForm/CommentForm';
 import KakaoMap from '../components/kakaoMap/KakaoMap';
 
 const MainBoxLayout = styled.div`
