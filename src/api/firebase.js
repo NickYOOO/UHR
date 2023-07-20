@@ -7,7 +7,7 @@ import {
   updateProfile,
   signOut,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -53,6 +53,7 @@ export const signInWithFB = async (email, password) => {
     const errorMessage = error.message;
   }
 };
+
 export const watchAuthStateChange = callback => {
   onAuthStateChanged(auth, user => {
     callback(user);
@@ -61,4 +62,23 @@ export const watchAuthStateChange = callback => {
 
 export const signOutWithFB = async () => {
   await signOut(auth);
+};
+
+export const getUserInfo = async email => {
+  if (!email) {
+    return;
+  }
+
+  const usersCollection = collection(db, 'users');
+  const q = query(usersCollection, where('email', '==', email));
+  const querySnapshot = await getDocs(q);
+  const initialInfo = [];
+  querySnapshot.forEach(item => {
+    const data = {
+      ...item.data(),
+    };
+
+    initialInfo.push(data);
+  });
+  return initialInfo[0];
 };
