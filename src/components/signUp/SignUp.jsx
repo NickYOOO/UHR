@@ -1,5 +1,3 @@
-// SignUp.js
-
 import React from 'react';
 import useFormValidation from '../../hooks/useFormValidation';
 import InputWithLabel from '../common/input/InputWithLabel';
