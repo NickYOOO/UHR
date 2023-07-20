@@ -33,6 +33,13 @@ export const getHeritageImages = async param => {
   return result;
 };
 
+export const getHeritagesBySearch = async params => {
+  // ?ccbaCtcd=도시코드&ccbaLcto=시군구코드&ccbaMnm1=문화재국문명
+  // ?ccbaCtcd=11&ccbaLcto=11&ccbaMnm1=원각사지
+  const res = await axios.get(`${LIST_URL}?${params}`);
+  const item = new XMLParser().parseFromString(res.data);
+  return item.children;
+
 export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
   const result = [];
   const res = await axios.get(
