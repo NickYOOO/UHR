@@ -4,6 +4,7 @@ export const SignUpLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   width: 640px;
   height: 560px;
   margin: 90px auto;
@@ -16,9 +17,9 @@ export const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px 0 30px 0;
   gap: 8px;
   width: 430px;
+  margin: 40px 0 30px 0;
   padding: 0px 30px 0px 30px;
 
   & > h2 {
@@ -39,10 +40,6 @@ export const SignUpBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 15px;
-
-  & > div {
-    margin-top: 40px;
-  }
 
   & > a {
     color: #ff7c1d;
