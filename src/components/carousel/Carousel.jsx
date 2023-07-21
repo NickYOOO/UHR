@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getHeritageImages, getTopTenHeritages } from '../../api/heritage';
 import shortid from 'shortid';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../loading/Loading';
 
 const Carousel = () => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const Carousel = () => {
       return items;
     },
   });
+
   const imgParam = heritages?.map(item => {
     const need = {
       ccbaKdcd: item[9].value,
@@ -31,6 +33,7 @@ const Carousel = () => {
     };
     return need;
   });
+
   const { data: imgUrl, isLoading: imgIsLoading } = useQuery(
     ['carouselImages'],
     async () => {
@@ -41,6 +44,10 @@ const Carousel = () => {
       enabled: !!imgParam,
     }
   );
+
+  if(isLoading || imgIsLoading) {
+    return <Loading text={'이미지 불러오는 중...'} />
+  }
 
   const goToDetail = item => {
     const id = item[13].value;
