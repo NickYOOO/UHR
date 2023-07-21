@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const ModalLayout = styled.div`
   position: fixed;
@@ -8,7 +8,7 @@ export const ModalLayout = styled.div`
   height: 100vh;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.24);
-`
+`;
 
 export const ModalBox = styled.div`
   position: absolute;
@@ -24,16 +24,20 @@ export const ModalBox = styled.div`
   padding: 10px;
   background-color: #fff;
   border-radius: 8px;
-`
+`;
 
 export const ModalParagraph = styled.p`
   font-size: 18px;
   font-family: 'omnigothic030';
-`
+`;
 
 export const ModalBtnBox = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
   width: 100%;
-`
+`;
+
+export const ModalSpan = styled.span`
+  font-size: 14px;
+`;
