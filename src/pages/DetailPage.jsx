@@ -6,7 +6,7 @@ import CommentForm from '../components/comments/commentForm/CommentForm';
 import KakaoMap from '../components/kakaoMap/KakaoMap';
 import { useLocation, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { getHeritageInfo } from '../api/heritage';
+import { getHeritageInfoById } from '../api/heritage';
 import Loading from '../components/loading/Loading';
 
 const MainBoxLayout = styled.div`
@@ -17,12 +17,9 @@ const MainBoxLayout = styled.div`
 
 function DetailPage() {
   const param = useParams();
-  const location = useLocation();
-  const { ccbaKdcd, ccbaCtcd, ccbaAsno } = location.state;
-  const params = { ccbaKdcd, ccbaCtcd, ccbaAsno };
   const { data, isLoading } = useQuery(
     ['detail', param.id],
-    async () => await getHeritageInfo(params)
+    async () => await getHeritageInfoById(param.id)
   );
 
   useEffect(() => {
@@ -33,6 +30,11 @@ function DetailPage() {
     return <Loading />;
   }
 
+  const need = data.infoHead.toSpliced(3, 3);
+  const params = need.reduce((acc, cur) => {
+    acc[cur.name] = cur.value;
+    return acc;
+  }, {});
   const [longitude, latitude] = data.infoHead.slice(4);
   const imageUrl = data.infoBody.find(item => item.name === 'imageUrl');
 
@@ -40,7 +42,7 @@ function DetailPage() {
     <MainBoxLayout>
       <HeritageDetail information={data.infoBody} />
       <KakaoMap latitude={latitude.value} longitude={longitude.value} imageUrl={imageUrl.value} />
-      <HeritageImages {...params} />
+      <HeritageImages {...params} id={param.id} />
       <CommentForm
         hId={data.infoHead[3].value}
         hName={`${data.infoBody[2].value} (${data.infoBody[3].value})`}
