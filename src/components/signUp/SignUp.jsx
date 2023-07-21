@@ -11,7 +11,7 @@ import useSystemModal from '../../hooks/useSystemModal';
 
 function SignUp() {
   const navigate = useNavigate();
-  const { formState, validationMsg, validationState, handleInputChange } = useFormValidation();
+  const { formState, validationMsg, validationState, handleJoinInputChange } = useFormValidation();
 
   const onClickSignUpHandler = async e => {
     e.preventDefault();
@@ -45,77 +45,75 @@ function SignUp() {
     }
   };
   return (
-    <Styled.SignUpContainer>
-      <Styled.SignUpBox>
+    <Styled.SignUpLayout>
+      <Styled.SignUpForm onSubmit={onClickSignUpHandler}>
         <h2>회원가입</h2>
-        <Styled.SignUpForm onSubmit={onClickSignUpHandler}>
-          <InputWithLabel
-            w={100}
-            name="displayName"
-            type="text"
-            value={formState.displayName}
-            onChange={handleInputChange}
-            required="닉네임은 필수 입력사항 입니다."
-          >
-            닉네임
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.displayNameState}>
-            {validationMsg.displayNameMsg}
-          </Styled.ValidationMessage>
+        <InputWithLabel
+          w={100}
+          name="displayName"
+          type="text"
+          value={formState.displayName}
+          onChange={handleJoinInputChange}
+          required="닉네임은 필수 입력사항 입니다."
+        >
+          닉네임
+        </InputWithLabel>
+        <Styled.ValidationMessage color={validationState.displayNameState ? 'green' : 'red'}>
+          {validationMsg.displayNameMsg}
+        </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="email"
-            type="email"
-            value={formState.email}
-            onChange={handleInputChange}
-            required="e-mail 주소는 필수 입력사항 입니다."
-          >
-            이메일
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.emailState}>
-            {validationMsg.emailMsg}
-          </Styled.ValidationMessage>
+        <InputWithLabel
+          w={100}
+          name="email"
+          type="email"
+          value={formState.email}
+          onChange={handleJoinInputChange}
+          required="e-mail 주소는 필수 입력사항 입니다."
+        >
+          이메일
+        </InputWithLabel>
+        <Styled.ValidationMessage color={validationState.emailState ? 'green' : 'red'}>
+          {validationMsg.emailMsg}
+        </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="pwd"
-            type="password"
-            value={formState.pwd}
-            onChange={handleInputChange}
-            required="비밀번호는 필수 입력입니다"
-          >
-            비밀번호
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.pwdState}>
-            {validationMsg.pwdMsg}
-          </Styled.ValidationMessage>
+        <InputWithLabel
+          w={100}
+          name="pwd"
+          type="password"
+          value={formState.pwd}
+          onChange={handleJoinInputChange}
+          required="비밀번호는 필수 입력입니다"
+        >
+          비밀번호
+        </InputWithLabel>
+        <Styled.ValidationMessage color={validationState.pwdState ? 'green' : 'red'}>
+          {validationMsg.pwdMsg}
+        </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="confirmPwd"
-            type="password"
-            value={formState.confirmPwd}
-            onChange={handleInputChange}
-            required="비밀번호 확인은 필수 입력입니다"
-          >
-            비밀번호 확인
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.confirmPwdState}>
-            {validationMsg.confirmPwdMsg}
-          </Styled.ValidationMessage>
-          <Styled.ButtonArea>
-            <Button size="medium" disabled={!validationState.isFormValid}>
-              회원가입
-            </Button>
-          </Styled.ButtonArea>
-        </Styled.SignUpForm>
-        <div>
-          이미 회원이시라면?
-          <Link to="/signin">로그인</Link>
-        </div>
+        <InputWithLabel
+          w={100}
+          name="confirmPwd"
+          type="password"
+          value={formState.confirmPwd}
+          onChange={handleJoinInputChange}
+          required="비밀번호 확인은 필수 입력입니다"
+        >
+          비밀번호 확인
+        </InputWithLabel>
+        <Styled.ValidationMessage color={validationState.confirmPwdState ? 'green' : 'red'}>
+          {validationMsg.confirmPwdMsg}
+        </Styled.ValidationMessage>
+        <Styled.ButtonArea>
+          <Button size="medium" disabled={!validationState.isFormValid}>
+            회원가입
+          </Button>
+        </Styled.ButtonArea>
+      </Styled.SignUpForm>
+      <Styled.SignUpBox>
+        <p>이미 회원이시라면?</p>
+        <Link to="/signin">로그인</Link>
       </Styled.SignUpBox>
-    </Styled.SignUpContainer>
+    </Styled.SignUpLayout>
   );
 }
 

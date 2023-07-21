@@ -25,8 +25,6 @@ export const SignUpForm = styled.form`
   & > h2 {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 40px;
     font-size: 24px;
     padding: 20px;
   }
