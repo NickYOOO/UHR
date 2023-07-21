@@ -3,19 +3,33 @@ import styled from 'styled-components';
 import { getHeritagesBySearch } from '../api/heritage';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../components/loading/Loading';
-import { useNavigate } from 'react-router-dom';
-
-// 검색 컴포넌트 import 해오면 됩니다
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+// import Search from '../components/common/search/Search';
 
 const ListPage = () => {
   const navigate = useNavigate();
-  const params = 'ccbaCtcd=11&ccbaMnm1=탑&pageIndex=1';
+  const param = useParams();
+  const location = useLocation();
+  let { ccbaCtcd, ccbaLcto, ccbaMnm1 } = location.state;
+  const searchParams = { ccbaCtcd, ccbaLcto, ccbaMnm1 };
+  if (ccbaCtcd === '00') {
+    ccbaCtcd = '';
+  }
+  if (ccbaCtcd === '0') {
+    ccbaCtcd = 'ZZ';
+  }
+  if (ccbaLcto === '0') {
+    ccbaLcto = 'ZZ';
+  }
+  const params = `${ccbaCtcd && `ccbaCtcd=${ccbaCtcd}`}${ccbaCtcd && `&ccbaLcto=${ccbaLcto}`}${
+    ccbaMnm1 ? `&ccbaMnm1=${ccbaMnm1}` : ''
+  }`;
   let totalCnt = 0;
   let totalPage = 0;
   let searchedHeritageArr = [];
 
   const { data, isLoading, isSuccess, isError } = useQuery({
-    queryKey: ['heritageListBySearch'],
+    queryKey: ['heritageListBySearch', ccbaCtcd, ccbaLcto, ccbaMnm1],
     queryFn: () => getHeritagesBySearch(params),
   });
 
@@ -38,13 +52,15 @@ const ListPage = () => {
     searchedHeritageArr = data.filter(item => item.name === 'item');
   }
 
-  const handleOnClickTr = (key) => {
+  const handleOnClickTr = key => {
     navigate(`/detail/${key}`);
   };
 
   return (
     <div style={{ padding: '60px 0px' }}>
-      {/* 검색 컴포넌트 여기에 넣으면 됩니다 */}
+      {/* <SearchPositionBox>
+        <Search bg="#082141ad" />
+      </SearchPositionBox> */}
 
       <p>
         조회된 총 데이터 건 수: <strong style={{ fontWeight: 'bolder' }}>{totalCnt}</strong>
@@ -62,8 +78,8 @@ const ListPage = () => {
           </thead>
           <tbody>
             {searchedHeritageArr.map(item => {
-              const key = item.children[1].value; // no(key)
               const num = item.children[0].value; // sn
+              const key = item.children[1].value; // no(key)
               const kind = item.children[2].value.replace(/ >/g, ''); // ccmaName
               const nameKr = item.children[4].value.replace(/ >/g, ''); // ccbaMnm1
               const nameCh = item.children[5].value.replace(/ >/g, ''); // ccbaMnm2
@@ -76,10 +92,7 @@ const ListPage = () => {
               const ccbaCpno = item.children[13].value;
 
               return (
-                <TableRow
-                  key={key}
-                  onClick={() => handleOnClickTr(ccbaCpno)}
-                >
+                <TableRow key={key} onClick={() => handleOnClickTr(ccbaCpno)}>
                   <TableCell>{num}</TableCell>
                   <TableCell>{kind}</TableCell>
                   <TableCell>
@@ -132,3 +145,5 @@ const TableCell = styled.td`
   line-height: normal;
   text-align: left;
 `;
+
+// const SearchPositionBox = styled.div``;
