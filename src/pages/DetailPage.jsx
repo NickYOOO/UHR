@@ -21,11 +21,10 @@ function DetailPage() {
   const params = { ccbaKdcd, ccbaCtcd, ccbaAsno };
   const { data, isLoading } = useQuery(['detail'], () => getHeritageInfo(params));
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-  
+
   if (isLoading) {
     return <Loading />;
   }

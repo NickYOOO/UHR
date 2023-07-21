@@ -27,13 +27,22 @@ const CommentForm = ({ hId }) => {
   const handleSubmit = async () => {
     const uniqueId = uuidv4();
 
+    let today = new Date();
+    let time = {
+      year: today.getFullYear(),
+      month: today.getMonth() + 1,
+      date: today.getDate(),
+      hours: today.getHours(),
+      minutes: today.getMinutes(),
+    };
+
     const newComment = {
       id: uniqueId,
       hId,
       user: auth.currentUser ? auth.currentUser.uid : null,
       content: comment,
-      originTime: new Date().toISOString(),
-      modifyTime: new Date().toISOString(),
+      originTime: `${time.year}/${time.month}/${time.date} ${time.hours}:${time.minutes}`,
+      modifyTime: `${time.year}/${time.month}/${time.date} ${time.hours}:${time.minutes}`,
     };
 
     try {
