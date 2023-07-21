@@ -62,9 +62,8 @@ export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
 
 export const getHeritage = async ccbaCpno => {
   try {
-    const res = await fetch(`${LIST_URL}?ccbaCpno=${ccbaCpno}`);
-    const data = await res.text();
-    const item = new XMLParser().parseFromString(data);
+    const res = await axios.get(`${LIST_URL}?ccbaCpno=${ccbaCpno}`);
+    const item = new XMLParser().parseFromString(res.data);
     return item.children[3];
   } catch (error) {
     console.error('Error fetching heritage:', error);
