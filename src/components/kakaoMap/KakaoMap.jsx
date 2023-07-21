@@ -27,7 +27,7 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
 
   return (
     <Map
-      center={{ lat, lng }}
+      center={center.center}
       isPanto={center.isPanto}
       style={{ width: '100%', height: '400px' }}
       zoomable={false}

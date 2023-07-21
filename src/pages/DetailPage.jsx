@@ -4,7 +4,7 @@ import HeritageDetail from '../components/heritageDetail/HeritageDetail';
 import HeritageImages from '../components/heritageImages/HeritageImages';
 import CommentForm from '../components/comments/commentForm/CommentForm';
 import KakaoMap from '../components/kakaoMap/KakaoMap';
-import { useLocation } from 'react-router';
+import { useLocation, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getHeritageInfo } from '../api/heritage';
 import Loading from '../components/loading/Loading';
@@ -16,16 +16,19 @@ const MainBoxLayout = styled.div`
 `;
 
 function DetailPage() {
+  const param = useParams();
   const location = useLocation();
   const { ccbaKdcd, ccbaCtcd, ccbaAsno } = location.state;
   const params = { ccbaKdcd, ccbaCtcd, ccbaAsno };
-  const { data, isLoading } = useQuery(['detail'], () => getHeritageInfo(params));
-
+  const { data, isLoading } = useQuery(
+    ['detail', param.id],
+    async () => await getHeritageInfo(params)
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-  
+
   if (isLoading) {
     return <Loading />;
   }
