@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
 import * as Styled from './style';
 import Logo from '../../assets/icon/logo.svg';
-
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { auth, getUserInfo, signOutWithFB, watchAuthStateChange } from '../../api/firebase';
@@ -32,6 +30,7 @@ function Header() {
 
   const handleLogout = async () => {
     await signOutWithFB();
+    navigate('/')
   };
 
   return (
