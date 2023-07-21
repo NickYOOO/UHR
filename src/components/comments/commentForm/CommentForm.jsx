@@ -5,18 +5,38 @@ import { auth, getUserInfo } from '../../../api/firebase';
 import { HiDotsVertical } from 'react-icons/hi';
 import api from '../../../axios/api';
 import currentTime from '../../../utill/currentTime';
+import { addHeritageComment, getHeritageComments } from '../../../api/comment';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import Loading from '../../loading/Loading';
+import useSystemModal from '../../../hooks/useSystemModal';
+import { useSelector } from 'react-redux';
 
 const CommentForm = ({ hId, hName }) => {
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState([]);
   const [userName, setUserName] = useState('');
   const [selectedComment, setSelectedComment] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editContent, setEditContent] = useState('');
 
-  useEffect(() => {
-    fetchComments();
+  const systemModal = useSelector(state => state.systemModal);
+  const { closeModal, alertModal, confirmModal, confirmAndClose } = useSystemModal()
 
+  const queryClient = useQueryClient();
+  const { data: comments, isLoading } = useQuery(
+    ['detail', 'comments', hId],
+    async () => await getHeritageComments(hId)
+  );
+
+  const addCommentsMutate = useMutation(addHeritageComment, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['detail', 'comments', hId]);
+    },
+    onError: () => {
+      // 오류 처리.. 오류가 어쩌다 날라나
+    }
+  });
+
+  useEffect(() => {
     if (auth.currentUser) {
       getUserInfo(auth.currentUser.email)
         .then(info => {
@@ -28,18 +48,9 @@ const CommentForm = ({ hId, hName }) => {
     }
   }, [hId, userName]);
 
-  const fetchComments = async () => {
-    try {
-      const response = await fetch(`http://localhost:3001/comments?hId=${hId}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch comments');
-      }
-      const data = await response.json();
-      setComments(data);
-    } catch (error) {
-      console.error('Error fetching comments:', error);
-    }
-  };
+  if (isLoading) {
+    return <Loading />;
+  }
 
   const handleSubmit = async () => {
     const uniqueId = uuidv4();
@@ -49,38 +60,22 @@ const CommentForm = ({ hId, hName }) => {
       hId,
       hName,
       user: auth.currentUser ? auth.currentUser.uid : null,
-      username: userName,
+      userName,
       content: comment,
       originTime: currentTime(),
       modifyTime: currentTime(),
     };
-
-    try {
-      const response = await fetch('http://localhost:3001/comments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newComment),
-      });
-
-      if (response.ok) {
-        setComment('');
-        fetchComments();
-      } else {
-        console.log('댓글 작성 실패');
-      }
-    } catch (error) {
-      console.log('댓글 작성 오류:', error);
-    }
+    addCommentsMutate.mutate(newComment);
+    setComment('');
   };
 
   const handleDeleteComment = async commentId => {
+    confirmAndClose(true, '정말 삭제하시겠습니까?');
     const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
     if (confirmDelete) {
       try {
         await api.delete(`/comments/${commentId}`);
-        fetchComments();
+        // fetchComments();
       } catch (error) {
         console.log('댓글 삭제 오류:', error);
       }
@@ -107,7 +102,7 @@ const CommentForm = ({ hId, hName }) => {
         setEditMode(false);
         setEditContent('');
         setSelectedComment(null);
-        fetchComments();
+        // fetchComments();
       } else {
         console.log('댓글 수정 실패');
       }
@@ -142,7 +137,7 @@ const CommentForm = ({ hId, hName }) => {
           <Style.CommentItem key={comment.id}>
             <div>
               <Style.CommentHeader>
-                <Style.CommentUser>{comment.username}</Style.CommentUser>
+                <Style.CommentUser>{comment.userName}</Style.CommentUser>
                 <Style.CommentTime>{comment.originTime}</Style.CommentTime>
               </Style.CommentHeader>
               <Style.CommentContent>{comment.content}</Style.CommentContent>
@@ -192,6 +187,7 @@ const CommentForm = ({ hId, hName }) => {
           <Style.CommentButton onClick={hideEditMode}>취소</Style.CommentButton>
         </Style.CommentFormContainer>
       )}
+      {}
     </>
   );
 };
