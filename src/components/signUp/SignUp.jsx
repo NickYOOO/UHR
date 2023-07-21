@@ -9,10 +9,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../../api/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import useSystemModal from '../../hooks/useSystemModal';
 
 function SignUp() {
   const navigate = useNavigate();
   const { formState, validationMsg, validationState, handleInputChange } = useFormValidation();
+  const { closeModal, alertModal, confirmModal, confirmAndClose } = useSystemModal()
 
   const onClickSignUpHandler = async e => {
     e.preventDefault();
@@ -47,77 +49,80 @@ function SignUp() {
   };
 
   return (
-    <Styled.SignUpContainer>
-      <Styled.SignUpBox>
-        <h2>회원가입</h2>
-        <Styled.SignUpForm onSubmit={onClickSignUpHandler}>
-          <InputWithLabel
-            w={100}
-            name="displayName"
-            type="text"
-            value={formState.displayName}
-            onChange={handleInputChange}
-            required="닉네임은 필수 입력사항 입니다."
-          >
-            닉네임
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.displayNameState}>
-            {validationMsg.displayNameMsg}
-          </Styled.ValidationMessage>
+    <>
+      <Styled.SignUpContainer>
+        <Styled.SignUpBox>
+          <h2>회원가입</h2>
+          <Styled.SignUpForm onSubmit={onClickSignUpHandler}>
+            <InputWithLabel
+              w={100}
+              name="displayName"
+              type="text"
+              value={formState.displayName}
+              onChange={handleInputChange}
+              required="닉네임은 필수 입력사항 입니다."
+            >
+              닉네임
+            </InputWithLabel>
+            <Styled.ValidationMessage isValid={validationState.displayNameState}>
+              {validationMsg.displayNameMsg}
+            </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="email"
-            type="email"
-            value={formState.email}
-            onChange={handleInputChange}
-            required="e-mail 주소는 필수 입력사항 입니다."
-          >
-            이메일
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.emailState}>
-            {validationMsg.emailMsg}
-          </Styled.ValidationMessage>
+            <InputWithLabel
+              w={100}
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleInputChange}
+              required="e-mail 주소는 필수 입력사항 입니다."
+            >
+              이메일
+            </InputWithLabel>
+            <Styled.ValidationMessage isValid={validationState.emailState}>
+              {validationMsg.emailMsg}
+            </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="pwd"
-            type="password"
-            value={formState.pwd}
-            onChange={handleInputChange}
-            required="비밀번호는 필수 입력입니다"
-          >
-            비밀번호
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.pwdState}>
-            {validationMsg.pwdMsg}
-          </Styled.ValidationMessage>
+            <InputWithLabel
+              w={100}
+              name="pwd"
+              type="password"
+              value={formState.pwd}
+              onChange={handleInputChange}
+              required="비밀번호는 필수 입력입니다"
+            >
+              비밀번호
+            </InputWithLabel>
+            <Styled.ValidationMessage isValid={validationState.pwdState}>
+              {validationMsg.pwdMsg}
+            </Styled.ValidationMessage>
 
-          <InputWithLabel
-            w={100}
-            name="confirmPwd"
-            type="password"
-            value={formState.confirmPwd}
-            onChange={handleInputChange}
-            required="비밀번호 확인은 필수 입력입니다"
-          >
-            비밀번호 확인
-          </InputWithLabel>
-          <Styled.ValidationMessage isValid={validationState.confirmPwdState}>
-            {validationMsg.confirmPwdMsg}
-          </Styled.ValidationMessage>
-          <Styled.ButtonArea>
-            <Button size="medium" disabled={!validationState.isFormValid}>
-              회원가입
-            </Button>
-          </Styled.ButtonArea>
-        </Styled.SignUpForm>
-        <div>
-          이미 회원이시라면?
-          <Link to="/signin">로그인</Link>
-        </div>
-      </Styled.SignUpBox>
-    </Styled.SignUpContainer>
+            <InputWithLabel
+              w={100}
+              name="confirmPwd"
+              type="password"
+              value={formState.confirmPwd}
+              onChange={handleInputChange}
+              required="비밀번호 확인은 필수 입력입니다"
+            >
+              비밀번호 확인
+            </InputWithLabel>
+            <Styled.ValidationMessage isValid={validationState.confirmPwdState}>
+              {validationMsg.confirmPwdMsg}
+            </Styled.ValidationMessage>
+            <Styled.ButtonArea>
+              <Button size="medium" disabled={!validationState.isFormValid}>
+                회원가입
+              </Button>
+            </Styled.ButtonArea>
+          </Styled.SignUpForm>
+          <div>
+            이미 회원이시라면?
+            <Link to="/signin">로그인</Link>
+          </div>
+        </Styled.SignUpBox>
+      </Styled.SignUpContainer>
+      {}
+    </>
   );
 }
 
