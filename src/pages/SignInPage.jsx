@@ -4,10 +4,12 @@ import Button from '../components/common/Button';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { signInWithFB } from '../api/firebase';
+import { TimerModal } from '../components/systemModal/SystemModal';
 
 function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onChange = event => {
     const {
@@ -24,6 +26,7 @@ function SignInPage() {
   const SignIn = async event => {
     event.preventDefault();
     await signInWithFB(email, password);
+    setIsModalOpen(true);
   };
 
   useEffect(() => {
@@ -47,6 +50,14 @@ function SignInPage() {
           비밀번호
         </InputWithLabel>
         <Button>로그인</Button>
+        {isModalOpen && (
+          <TimerModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+            text={'로그인 완료!'}
+            subText={'처음 화면으로 이동합니다'}
+          />
+        )}
       </SignInForm>
       <SignUpBox>
         <p>회원이 아니시라면?</p>
