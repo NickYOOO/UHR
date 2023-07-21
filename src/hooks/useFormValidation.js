@@ -22,7 +22,7 @@ const useFormValidation = () => {
     confirmPwdState: false,
   });
 
-  const handleInputChange = e => {
+  const handleJoinInputChange = e => {
     const { name, value } = e.target;
 
     setFormState(prev => ({ ...prev, [name]: value }));
@@ -159,7 +159,7 @@ const useFormValidation = () => {
     formState,
     validationMsg,
     validationState,
-    handleInputChange,
+    handleJoinInputChange,
   };
 };
 

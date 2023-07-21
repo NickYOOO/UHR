@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 
-export const SignUpLayout = styled.div`
+export const SignInLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: center;
   width: 640px;
   height: 560px;
   margin: 90px auto;
@@ -13,20 +13,20 @@ export const SignUpLayout = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const SignUpForm = styled.form`
+export const SignInForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   width: 430px;
-  margin: 40px 0 30px 0;
+  /* margin: 20px 50px; */
   padding: 0px 30px 0px 30px;
 
   & > h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-bottom: 20px;
     font-size: 24px;
     padding: 20px;
   }
@@ -39,6 +39,7 @@ export const ButtonArea = styled.div`
 export const SignUpBox = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 90px;
   gap: 15px;
 
   & > a {
