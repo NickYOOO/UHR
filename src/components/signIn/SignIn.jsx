@@ -2,48 +2,70 @@ import React, { useState } from 'react';
 import InputWithLabel from '../common/input/InputWithLabel';
 import Button from '../common/Button';
 import * as Styled from './style';
-import { Link } from 'react-router-dom';
-import { signInWithFB } from '../../api/firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../../api/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formState, setFormState] = useState({
+    email: '',
+    pwd: '',
+  });
 
-  const onChange = event => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === 'email') {
-      setEmail(value);
-    }
-    if (name === 'password') {
-      setPassword(value);
-    }
+  const navigate = useNavigate();
+  const { email, password } = formState;
+
+  const isEmailValid = email && email.trim() !== '';
+  const isPasswordValid = password && password.trim() !== '';
+  const isFormValid = isEmailValid && isPasswordValid;
+
+  const handleLoginInputChange = e => {
+    const { name, value } = e.target;
+
+    setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const SignIn = async event => {
-    event.preventDefault();
-    await signInWithFB(email, password);
+  const onClickSignInHandler = async e => {
+    e.preventDefault();
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('로그인에 성공했습니다!');
+      navigate('/');
+    } catch (error) {
+      alert('로그인 실패, 이메일 주소와 비밀번호를 확인해 주세요!');
+    }
   };
 
   return (
     <Styled.SignInLayout>
-      <Styled.SignInForm onSubmit={SignIn}>
+      <Styled.SignInForm onSubmit={onClickSignInHandler}>
         <h2>로그인</h2>
-        <InputWithLabel name="email" value={email} onChange={onChange} w={'100'}>
+        <InputWithLabel
+          name="email"
+          value={email}
+          onChange={handleLoginInputChange}
+          required // 이메일과 비밀번호 필드에 required 속성을 추가합니다.
+          w={'100'}
+        >
           이메일
         </InputWithLabel>
+
         <InputWithLabel
           type="password"
           name="password"
           value={password}
-          onChange={onChange}
+          onChange={handleLoginInputChange}
+          required // 이메일과 비밀번호 필드에 required 속성을 추가합니다.
           w={'100'}
         >
           비밀번호
         </InputWithLabel>
+
         <Styled.ButtonArea>
-          <Button size="medium">로그인</Button>
+          <Button size="medium" disabled={!isFormValid}>
+            로그인
+          </Button>
         </Styled.ButtonArea>
       </Styled.SignInForm>
       <Styled.SignUpBox>
