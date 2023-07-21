@@ -10,7 +10,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 function SignUp() {
   const navigate = useNavigate();
-  const { formState, validationMsg, validationState, handleInputChange } = useFormValidation();
+  const { formState, validationMsg, validationState, handleJoinInputChange } = useFormValidation();
 
   const onClickSignUpHandler = async e => {
     e.preventDefault();
@@ -52,7 +52,7 @@ function SignUp() {
           name="displayName"
           type="text"
           value={formState.displayName}
-          onChange={handleInputChange}
+          onChange={handleJoinInputChange}
           required="닉네임은 필수 입력사항 입니다."
         >
           닉네임
@@ -66,7 +66,7 @@ function SignUp() {
           name="email"
           type="email"
           value={formState.email}
-          onChange={handleInputChange}
+          onChange={handleJoinInputChange}
           required="e-mail 주소는 필수 입력사항 입니다."
         >
           이메일
@@ -80,7 +80,7 @@ function SignUp() {
           name="pwd"
           type="password"
           value={formState.pwd}
-          onChange={handleInputChange}
+          onChange={handleJoinInputChange}
           required="비밀번호는 필수 입력입니다"
         >
           비밀번호
@@ -94,7 +94,7 @@ function SignUp() {
           name="confirmPwd"
           type="password"
           value={formState.confirmPwd}
-          onChange={handleInputChange}
+          onChange={handleJoinInputChange}
           required="비밀번호 확인은 필수 입력입니다"
         >
           비밀번호 확인
