@@ -15,7 +15,7 @@ const MyPage = () => {
   const currentUserUid = auth.currentUser ? auth.currentUser.uid : null;
 
   const { data, isLoading } = useQuery(
-    ['comment', currentUserUid],
+    ['comment', 'myPage', currentUserUid],
     async () => await getComment(currentUserUid)
   );
   console.log(data);

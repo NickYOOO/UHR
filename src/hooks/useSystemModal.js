@@ -16,7 +16,7 @@ const useSystemModal = () => {
   const closeModal = () => {
     dispatch(setSystemModal({ isOpen: false, msg: '' }));
   };
-  const confirmAndClose = () => {
+  const confirmAndClose = (isOpen, msg) => {
     dispatch(setSystemModal({ isOpen: false, msg: '', isConfirm: true }));
   };
 
