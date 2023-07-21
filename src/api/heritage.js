@@ -11,7 +11,11 @@ export const getTopTenHeritages = async () => {
   return item;
 };
 
-export const getHeritageInfo = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
+export const getHeritageInfoById = async id => {
+  const resById = await getHeritage(id);
+  const ccbaKdcd = resById.children[9].value;
+  const ccbaCtcd = resById.children[10].value;
+  const ccbaAsno = resById.children[11].value;
   const res = await axios.get(
     `${INFO_URL}?ccbaKdcd=${ccbaKdcd}&ccbaCtcd=${ccbaCtcd}&ccbaAsno=${ccbaAsno}`
   );
