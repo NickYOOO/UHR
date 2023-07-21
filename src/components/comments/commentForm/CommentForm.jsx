@@ -76,11 +76,14 @@ const CommentForm = ({ hId, hName }) => {
   };
 
   const handleDeleteComment = async commentId => {
-    try {
-      await api.delete(`/comments/${commentId}`);
-      fetchComments();
-    } catch (error) {
-      console.log('댓글 삭제 오류:', error);
+    const confirmDelete = window.confirm('정말 삭제하시겠습니까?');
+    if (confirmDelete) {
+      try {
+        await api.delete(`/comments/${commentId}`);
+        fetchComments();
+      } catch (error) {
+        console.log('댓글 삭제 오류:', error);
+      }
     }
   };
 
@@ -157,15 +160,17 @@ const CommentForm = ({ hId, hName }) => {
                 />
                 {selectedComment === comment && (
                   <Style.OptionsButton>
-                    <button onClick={() => handleDeleteComment(comment.id)}>삭제</button>
-                    <button
+                    <Style.OptionActionButton onClick={() => handleDeleteComment(comment.id)}>
+                      삭제
+                    </Style.OptionActionButton>
+                    <Style.OptionActionButton
                       onClick={() => {
                         setEditMode(true);
                         setEditContent(comment.content);
                       }}
                     >
                       수정
-                    </button>
+                    </Style.OptionActionButton>
                   </Style.OptionsButton>
                 )}
               </Style.MoreOptionsButton>
