@@ -60,4 +60,20 @@ export const CommentTime = styled.span`
 export const CommentContent = styled.p`
   margin: 0;
   font-size: 16px;
+  display: inline;
+  margin-right: 8px;
+`;
+
+export const CommentButtons = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+`;
+
+export const MoreOptionsButton = styled.button`
+  background-color: #e2e2e2;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  float: right;
 `;

@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import * as Style from './style';
 import { v4 as uuidv4 } from 'uuid';
-import { auth } from '../../../api/firebase';
+import { auth, getUserInfo } from '../../../api/firebase';
 
 const CommentForm = ({ hId }) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     fetchComments();
-  }, []);
+
+    if (auth.currentUser) {
+      getUserInfo(auth.currentUser.email)
+        .then(info => {
+          setUserName(info.displayName);
+        })
+        .catch(error => {
+          console.log('오류: ', error);
+        });
+    }
+  }, [hId]);
 
   const fetchComments = async () => {
     try {
-      const response = await fetch('http://localhost:3001/comments');
+      const response = await fetch(`http://localhost:3001/comments?hId=${hId}`);
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
@@ -31,6 +42,7 @@ const CommentForm = ({ hId }) => {
       id: uniqueId,
       hId,
       user: auth.currentUser ? auth.currentUser.uid : null,
+      username: userName,
       content: comment,
       originTime: new Date().toISOString(),
       modifyTime: new Date().toISOString(),
@@ -56,6 +68,8 @@ const CommentForm = ({ hId }) => {
     }
   };
 
+  const currentUserUid = auth.currentUser ? auth.currentUser.uid : null;
+
   return (
     <>
       <Style.CommentFormContainer>
@@ -73,10 +87,13 @@ const CommentForm = ({ hId }) => {
         {comments.map(comment => (
           <Style.CommentItem key={comment.id}>
             <Style.CommentHeader>
-              <Style.CommentUser>{comment.user}</Style.CommentUser>
+              <Style.CommentUser>{comment.username}</Style.CommentUser>
               <Style.CommentTime>{comment.originTime}</Style.CommentTime>
             </Style.CommentHeader>
             <Style.CommentContent>{comment.content}</Style.CommentContent>
+            {currentUserUid === comment.user && (
+              <Style.MoreOptionsButton>:</Style.MoreOptionsButton>
+            )}
           </Style.CommentItem>
         ))}
       </Style.CommentListContainer>
