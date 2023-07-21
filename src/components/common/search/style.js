@@ -5,7 +5,7 @@ export const SearchBox = styled.div`
   width: 1190px;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  /* gap: 16px; */
   margin: 0 auto;
   padding: 32px 0;
   background-color: ${({ bg }) => (bg ? bg : '#FFF')};
@@ -19,13 +19,15 @@ export const SearchBox = styled.div`
   & label,
   & input,
   & select,
-  & option,
-  & button {
-    font-size: 24px;
+  & option {
+    font-size: 22px;
   }
 
   @media screen and (max-width: 1200px) {
     width: 982px;
+    & input {
+      width: 230px;
+    }
   }
 
   @media screen and (max-width: 992px) {
@@ -40,6 +42,9 @@ export const SearchBox = styled.div`
     & option,
     & button {
       font-size: 18px;
+    }
+    & input {
+      width: 30px;
     }
   }
 
@@ -71,7 +76,8 @@ export const InputWithLabelBox = styled.div`
   }
 
   @media screen and (max-width: 992px) {
-    width: 90%;
+    width: 100%;
+    gap: 20px;
   }
 
   @media screen and (max-width: 576px) {

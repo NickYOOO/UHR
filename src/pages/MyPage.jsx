@@ -86,8 +86,7 @@ const MyPage = () => {
                       goToDetail(comment.hId);
                     }}
                   >
-                    {/* {comment.hName} */}
-                    {comment.hId}
+                    {comment.hName}
                   </CommentCell>
                   <CommentCell>{comment.content}</CommentCell>
                   <CommentCell>{comment.modifyTime}</CommentCell>
