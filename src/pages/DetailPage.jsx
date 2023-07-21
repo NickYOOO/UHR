@@ -41,7 +41,10 @@ function DetailPage() {
       <HeritageDetail information={data.infoBody} />
       <KakaoMap latitude={latitude.value} longitude={longitude.value} imageUrl={imageUrl.value} />
       <HeritageImages {...params} />
-      <CommentForm hId={data.infoHead[3].value} />
+      <CommentForm
+        hId={data.infoHead[3].value}
+        hName={`${data.infoBody[2].value} (${data.infoBody[3].value})`}
+      />
     </MainBoxLayout>
   );
 }

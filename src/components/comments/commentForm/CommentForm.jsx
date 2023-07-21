@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import * as Style from './style';
 import { v4 as uuidv4 } from 'uuid';
 import { auth, getUserInfo } from '../../../api/firebase';
+import currentTime from '../../../utill/currentTime';
 
-const CommentForm = ({ hId }) => {
+const CommentForm = ({ hId, hName }) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([]);
   const [userName, setUserName] = useState('');
@@ -41,11 +42,12 @@ const CommentForm = ({ hId }) => {
     const newComment = {
       id: uniqueId,
       hId,
+      hName,
       user: auth.currentUser ? auth.currentUser.uid : null,
       username: userName,
       content: comment,
-      originTime: new Date().toISOString(),
-      modifyTime: new Date().toISOString(),
+      originTime: currentTime(),
+      modifyTime: currentTime(),
     };
 
     try {

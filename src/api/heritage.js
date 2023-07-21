@@ -59,3 +59,15 @@ export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
   });
   return result;
 };
+
+export const getHeritage = async ccbaCpno => {
+  try {
+    const res = await fetch(`${LIST_URL}?ccbaCpno=${ccbaCpno}`);
+    const data = await res.text();
+    const item = new XMLParser().parseFromString(data);
+    return item.children[3];
+  } catch (error) {
+    console.error('Error fetching heritage:', error);
+    throw error;
+  }
+};
