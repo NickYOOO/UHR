@@ -26,7 +26,7 @@ function SignInPage() {
   const SignIn = async event => {
     event.preventDefault();
     await signInWithFB(email, password);
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
   };
 
   useEffect(() => {
