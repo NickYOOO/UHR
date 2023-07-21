@@ -12,9 +12,13 @@ const MyPage = () => {
   const [id, setId] = useState('');
   const navigate = useNavigate();
 
+  const currentUserUid = auth.currentUser ? auth.currentUser.uid : null;
+
   const fetchComments = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/comments`);
+      const response = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/comments?user=${currentUserUid}`
+      );
       if (!response.ok) {
         throw new Error('Failed to fetch comments');
       }
@@ -63,8 +67,14 @@ const MyPage = () => {
     <MyPageLayout>
       <MyPageParagraph>내 정보</MyPageParagraph>
       <MyPageBox>
-        <div>{userName}</div>
-        <div>{userEmail}</div>
+        <MyPageItem>
+          <p className="category">이름</p>
+          <p>{userName}</p>
+        </MyPageItem>
+        <MyPageItem>
+          <p className="category">이메일</p>
+          <p>{userEmail}</p>
+        </MyPageItem>
       </MyPageBox>
       <Separator />
       <CommentParagraph>작성한 댓글</CommentParagraph>
@@ -125,7 +135,19 @@ const MyPageBox = styled.div`
   margin: 30px;
   color: #000;
   font-size: 18px;
-  line-height: 2;
+`;
+
+const MyPageItem = styled.div`
+  display: flex;
+  margin: 10px 0;
+  font-weight: 700;
+
+  & .category {
+    width: 65px;
+    margin-right: 10px;
+    border-right: 3px solid #082141;
+    font-weight: 600;
+  }
 `;
 
 const Separator = styled.hr`
@@ -142,6 +164,7 @@ const CommentParagraph = styled.h3`
 `;
 
 const CommentTable = styled.table`
+  table-layout: fixed;
   width: 95%;
   margin: 0 auto;
 `;
@@ -159,8 +182,10 @@ const CommentHeader = styled.th`
 `;
 
 const CommentRow = styled.tr`
-  &:nth-child(even) {
-    /* 테이블 행 추가할 스타일 코드있으면 넣기 */
+  background-color: #ffffff;
+
+  &:last-child td {
+    border: none;
   }
 `;
 
@@ -172,13 +197,24 @@ const CommentCell = styled.td`
   word-wrap: break-word;
 
   &:nth-child(1) {
-    width: fit-content;
+    width: 20%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
   }
 
   &:nth-child(2) {
+    width: 20%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &:nth-child(3) {
+    width: 20%;
+    overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;

@@ -1,31 +1,3 @@
 {
-  "comments": [
-    {
-      "id": "11f26ba7-545b-45a5-8d1c-bf3f9a7d4097",
-      "hId": "1111100020000",
-      "user": "fJqtReg5O5Tq1B1qIUhqdBQBnEo1",
-      "username": "밍키4",
-      "content": "제발 되라 제발 수정되니?",
-      "originTime": "2023-07-21T07:59:19.836Z",
-      "modifyTime": "2023-07-21T07:59:28.778Z"
-    },
-    {
-      "id": "2465c421-efcd-4371-9b66-e95a929dcab5",
-      "hId": "1111100020000",
-      "user": "lRPP3OoPNyVPfYOp1icxjS8dID22",
-      "username": "로그인제발",
-      "content": "로그인 다시 ㅇㅇㅇㅇ",
-      "originTime": "2023-07-21T08:01:31.535Z",
-      "modifyTime": "2023-07-21T08:01:37.030Z"
-    },
-    {
-      "id": "21e2b178-4734-412a-b50e-03ae8466beae",
-      "hId": "1111100010000",
-      "user": "lRPP3OoPNyVPfYOp1icxjS8dID22",
-      "username": "로그인제발",
-      "content": "이제 유효성 검사 만들면 되니?",
-      "originTime": "2023-07-21T08:02:43.594Z",
-      "modifyTime": "2023-07-21T08:02:43.594Z"
-    }
-  ]
+  "comments": []
 }
