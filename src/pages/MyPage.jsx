@@ -1,52 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { auth, getUserInfo } from '../api/firebase';
+import { auth, getUserInfo, watchAuthStateChange } from '../api/firebase';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 import { getHeritage } from '../api/heritage';
+import { useQuery } from '@tanstack/react-query';
+import { getComment } from '../api/comment';
+import Loading from '../components/loading/Loading';
 
 const MyPage = () => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [comments, setComments] = useState('');
-  const [id, setId] = useState('');
   const navigate = useNavigate();
 
   const currentUserUid = auth.currentUser ? auth.currentUser.uid : null;
 
-  const fetchComments = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/comments?user=${currentUserUid}`
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch comments');
-      }
-      const data = await response.json();
-      setComments(data);
-    } catch (error) {
-      console.error('Error fetching comments:', error);
-    }
-  };
+  const { data, isLoading } = useQuery(
+    ['comment', currentUserUid],
+    async () => await getComment(currentUserUid)
+  );
+  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    getUserInfo(auth.currentUser?.email)
-      .then(info => {
-        setUserName(info.displayName);
-        setUserEmail(info.email);
-
-        fetchComments();
-      })
-      .catch(error => {
-        console.log('오류: ', error);
-      });
+    watchAuthStateChange(user => {
+      if (user) {
+        getUserInfo(auth.currentUser?.email)
+          .then(info => {
+            setUserName(info.displayName);
+            setUserEmail(info.email);
+          })
+          .catch(error => {
+            console.log('오류: ', error);
+          });
+      } else {
+        navigate('/');
+      }
+    });
   }, []);
 
   const goToDetail = async id => {
-    setId(id);
-
     if (id) {
       try {
         const data = await getHeritage(id);
@@ -62,6 +54,10 @@ const MyPage = () => {
       }
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <MyPageLayout>
@@ -87,8 +83,8 @@ const MyPage = () => {
           </CommentRow>
         </thead>
         <tbody>
-          {comments &&
-            comments.map((comment, index) => {
+          {data &&
+            data.map((comment, index) => {
               return (
                 <CommentRow key={index}>
                   <CommentCell
