@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Button from '../common/Button';
 import useSystemModal from '../../hooks/useSystemModal';
 
-const SystemModal = () => {
+export const SystemModal = () => {
   useEffect(() => {
     document.body.style = 'overflow: hidden';
     return () => (document.body.style = 'overflow: auto');
@@ -30,4 +30,28 @@ const SystemModal = () => {
   );
 };
 
-export default SystemModal;
+export const TimerModal = ({ isModalOpen, setIsModalOpen, text, subText }) => {
+  useEffect(() => {
+    document.body.style = 'overflow: hidden';
+
+    const timer = setTimeout(() => {
+      setIsModalOpen(false);
+    }, 1000);
+
+    return () => {
+      document.body.style = 'overflow: auto';
+      clearTimeout(timer);
+      window.location.href = '/';
+    };
+  });
+
+  return createPortal(
+    <Styled.ModalLayout isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+      <Styled.ModalBox>
+        <Styled.ModalParagraph>{text}</Styled.ModalParagraph>
+        <Styled.ModalSpan>{subText}</Styled.ModalSpan>
+      </Styled.ModalBox>
+    </Styled.ModalLayout>,
+    document.getElementById('modal-portal')
+  );
+};

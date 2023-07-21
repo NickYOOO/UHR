@@ -5,18 +5,28 @@ const LIST_URL = 'http://www.cha.go.kr/cha/SearchKindOpenapiList.do';
 const IMG_URL = 'http://www.cha.go.kr/cha/SearchImageOpenapi.do';
 const INFO_URL = 'http://www.cha.go.kr/cha/SearchKindOpenapiDt.do';
 
-export const getHeritages = async () => {
+export const getTopTenHeritages = async () => {
   const res = await axios.get(`${LIST_URL}`);
   const item = new XMLParser().parseFromString(res.data);
   return item;
 };
 
-export const getHeritageInfo = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
+export const getHeritageInfoById = async id => {
+  const resById = await getHeritage(id);
+  const ccbaKdcd = resById.children[9].value;
+  const ccbaCtcd = resById.children[10].value;
+  const ccbaAsno = resById.children[11].value;
   const res = await axios.get(
     `${INFO_URL}?ccbaKdcd=${ccbaKdcd}&ccbaCtcd=${ccbaCtcd}&ccbaAsno=${ccbaAsno}`
   );
   const item = new XMLParser().parseFromString(res.data);
-  return item;
+  const infoHead = item.children.slice(0, 6);
+  const infoBody = item.children
+    .slice(6)
+    .map(item => item.children)[0]
+    .map(item => ({ ...item, value: item.value.replace(/ >/g, '') }));
+  const info = { infoHead, infoBody };
+  return info;
 };
 
 export const getHeritageImages = async param => {
@@ -52,4 +62,15 @@ export const getHeritageImg = async ({ ccbaKdcd, ccbaCtcd, ccbaAsno }) => {
     result.push(image.value);
   });
   return result;
+};
+
+export const getHeritage = async ccbaCpno => {
+  try {
+    const res = await axios.get(`${LIST_URL}?ccbaCpno=${ccbaCpno}`);
+    const item = new XMLParser().parseFromString(res.data);
+    return item.children[3];
+  } catch (error) {
+    console.error('Error fetching heritage:', error);
+    throw error;
+  }
 };

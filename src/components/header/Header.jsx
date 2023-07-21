@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react';
-
 import * as Styled from './style';
 import Logo from '../../assets/icon/logo.svg';
-
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { signOutWithFB, watchAuthStateChange } from '../../api/firebase';
+import { auth, getUserInfo, signOutWithFB, watchAuthStateChange } from '../../api/firebase';
 
 function Header() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     watchAuthStateChange(user => {
       if (user) {
         setIsLoggedIn(true);
+
+        getUserInfo(auth.currentUser?.email)
+          .then(info => {
+            setUserName(info.displayName);
+          })
+          .catch(error => {
+            console.log('오류: ', error);
+          });
       } else {
         setIsLoggedIn(false);
       }
@@ -23,18 +30,19 @@ function Header() {
 
   const handleLogout = async () => {
     await signOutWithFB();
+    navigate('/')
   };
 
   return (
     <Styled.Header>
       <Styled.TitleBox onClick={() => navigate('/')}>
-        <img src={Logo} alt="logo image" />
+        <img src={Logo} alt="logo" />
         <h1>당신의 문화유산 답사기</h1>
       </Styled.TitleBox>
       <Styled.UserBox>
         {isLoggedIn ? (
           <>
-            <Link to={`/mypage`}>르탄님</Link>
+            <Link to={`/mypage`}>{userName}</Link>
             <Link onClick={handleLogout}>로그아웃</Link>
           </>
         ) : (

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputWithLabel from '../common/input/InputWithLabel';
 import Button from '../common/Button';
 import * as Styled from './style';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../../api/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithFB } from '../../api/firebase';
 
 function SignIn() {
   const [formState, setFormState] = useState({
@@ -29,13 +28,17 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithFB(email, password);
       alert('로그인에 성공했습니다!');
       navigate('/');
     } catch (error) {
       alert('로그인 실패, 이메일 주소와 비밀번호를 확인해 주세요!');
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   return (
     <Styled.SignInLayout>
@@ -45,7 +48,7 @@ function SignIn() {
           name="email"
           value={email}
           onChange={handleLoginInputChange}
-          required // 이메일과 비밀번호 필드에 required 속성을 추가합니다.
+          required
           w={'100'}
         >
           이메일
@@ -56,7 +59,7 @@ function SignIn() {
           name="password"
           value={password}
           onChange={handleLoginInputChange}
-          required // 이메일과 비밀번호 필드에 required 속성을 추가합니다.
+          required
           w={'100'}
         >
           비밀번호

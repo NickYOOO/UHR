@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Map, MapMarker, MapTypeControl, Marker, ZoomControl } from 'react-kakao-maps-sdk';
 import * as Style from './style';
 
-const KakaoMap = ({ latitude, longitude }) => {
+const KakaoMap = ({ latitude, longitude, imageUrl }) => {
   const lat = latitude;
   const lng = longitude;
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +29,7 @@ const KakaoMap = ({ latitude, longitude }) => {
     <Map
       center={center.center}
       isPanto={center.isPanto}
-      style={{ width: '100%', height: '360px' }}
+      style={{ width: '100%', height: '400px' }}
       zoomable={false}
       onCenterChanged={map =>
         setCenter({
@@ -48,9 +48,7 @@ const KakaoMap = ({ latitude, longitude }) => {
         onMouseOver={() => setIsOpen(true)}
         onMouseOut={() => setIsOpen(false)}
       >
-        {isOpen && (
-          <Style.TargetImg src="http://www.cha.go.kr/unisearch/images/national_treasure/2685609.jpg" />
-        )}
+        {isOpen && <Style.TargetImg src={imageUrl} />}
       </MapMarker>
     </Map>
   );
