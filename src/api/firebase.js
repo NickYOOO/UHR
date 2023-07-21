@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import useSystemModal from '../hooks/useSystemModal';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -48,24 +49,20 @@ export const signInWithFB = async (email, password) => {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    alert('로그인에 성공했습니다!');
   } catch (error) {
-    console.log(error);
     switch (error.code) {
-      case 'auth/user-not-found' || 'auth/wrong-password':
-        return alert('이메일 혹은 비밀번호가 일치하지 않습니다.');
-      case 'auth/email-already-in-use':
-        return alert('이미 사용 중인 이메일입니다.');
-      case 'auth/weak-password':
-        return alert('비밀번호는 6글자 이상이어야 합니다.');
+      case 'auth/user-not-found' || 'auth/invalid-email':
+        error['message'] = '이메일이 일치하지 않습니다.';
+        return Promise.reject(error);
+      case 'auth/wrong-password' || 'auth/weak-password':
+        error['message'] = '비밀번호가 일치하지 않습니다.';
+        return Promise.reject(error);
       case 'auth/network-request-failed':
-        return alert('네트워크 연결에 실패 하였습니다.');
-      case 'auth/invalid-email':
-        return alert('잘못된 이메일 형식입니다.');
-      case 'auth/internal-error':
-        return alert('잘못된 요청입니다.');
+        error['message'] = '네트워크 연결에 실패 하였습니다.';
+        return Promise.reject(error);
       default:
-        return alert('로그인에 실패 하였습니다.');
+        error['message'] = '이메일 또는 비밀번호를 확인하세요';
+        return Promise.reject(error);
     }
   }
 };

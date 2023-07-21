@@ -27,7 +27,8 @@ export const ModalBox = styled.div`
 `;
 
 export const ModalParagraph = styled.p`
-  font-size: 18px;
+  font-size: 17px;
+  line-height: 1.4;
   font-family: 'omnigothic030';
 `;
 
