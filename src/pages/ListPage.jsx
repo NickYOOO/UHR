@@ -38,14 +38,8 @@ const ListPage = () => {
     searchedHeritageArr = data.filter(item => item.name === 'item');
   }
 
-  const handleOnClickTr = (key, ccbaKdcd, ccbaCtcd, ccbaAsno) => {
-    navigate(`/detail/${key}`, {
-      state: {
-        ccbaKdcd,
-        ccbaCtcd,
-        ccbaAsno,
-      },
-    });
+  const handleOnClickTr = (key) => {
+    navigate(`/detail/${key}`);
   };
 
   return (
@@ -79,11 +73,12 @@ const ListPage = () => {
               const ccbaKdcd = item.children[9].value;
               const ccbaCtcd = item.children[10].value;
               const ccbaAsno = item.children[11].value;
+              const ccbaCpno = item.children[13].value;
 
               return (
                 <TableRow
                   key={key}
-                  onClick={() => handleOnClickTr(key, ccbaKdcd, ccbaCtcd, ccbaAsno)}
+                  onClick={() => handleOnClickTr(ccbaCpno)}
                 >
                   <TableCell>{num}</TableCell>
                   <TableCell>{kind}</TableCell>
