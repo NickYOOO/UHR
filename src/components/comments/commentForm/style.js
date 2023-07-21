@@ -30,6 +30,8 @@ export const CommentListContainer = styled.div`
 `;
 
 export const CommentItem = styled.div`
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid #082141;
   padding: 10px;
   margin-bottom: 10px;
@@ -71,9 +73,43 @@ export const CommentButtons = styled.div`
 `;
 
 export const MoreOptionsButton = styled.button`
-  background-color: #e2e2e2;
+  background-color: transparent;
   padding: 4px 8px;
   border: none;
-  border-radius: 4px;
   float: right;
+`;
+
+export const OptionsButton = styled.div`
+  position: relative;
+  top: 8px;
+  width: 90%;
+  margin: 0 5%;
+  background: #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  &::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    border-color: #ffffff transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    top: -10px;
+    right: 7px;
+  }
+  ul {
+    padding: 10px 0;
+    li {
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      &:hover {
+        background-color: #d8d8d8;
+      }
+    }
+  }
 `;
