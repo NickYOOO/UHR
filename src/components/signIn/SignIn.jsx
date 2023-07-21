@@ -12,10 +12,10 @@ function SignIn() {
   });
 
   const navigate = useNavigate();
-  const { email, password } = formState;
+  // let { email, password } = formState;
 
-  const isEmailValid = email && email.trim() !== '';
-  const isPasswordValid = password && password.trim() !== '';
+  const isEmailValid = formState.email && formState.email.trim() !== '';
+  const isPasswordValid = formState.pwd && formState.pwd.trim() !== '';
   const isFormValid = isEmailValid && isPasswordValid;
 
   const handleLoginInputChange = e => {
@@ -28,7 +28,7 @@ function SignIn() {
     e.preventDefault();
 
     try {
-      await signInWithFB(email, password);
+      await signInWithFB(formState.email, formState.pwd);
       alert('로그인에 성공했습니다!');
       navigate('/');
     } catch (error) {
@@ -46,7 +46,7 @@ function SignIn() {
         <h2>로그인</h2>
         <InputWithLabel
           name="email"
-          value={email}
+          value={formState.email}
           onChange={handleLoginInputChange}
           required
           w={'100'}
@@ -56,8 +56,8 @@ function SignIn() {
 
         <InputWithLabel
           type="password"
-          name="password"
-          value={password}
+          name="pwd"
+          value={formState.pwd}
           onChange={handleLoginInputChange}
           required
           w={'100'}
