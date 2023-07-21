@@ -5,7 +5,7 @@ const initialState = {
   isOpen: false,
   type: false,
   isConfirm: false,
-  msg: '비밀번호를 확인해 주세요',
+  msg: '',
 };
 
 const systemModalSlice = createSlice({
