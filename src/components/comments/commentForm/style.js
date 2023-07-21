@@ -73,6 +73,7 @@ export const CommentButtons = styled.div`
 `;
 
 export const MoreOptionsButton = styled.button`
+  position: relative;
   background-color: transparent;
   padding: 4px 8px;
   border: none;
@@ -80,36 +81,31 @@ export const MoreOptionsButton = styled.button`
 `;
 
 export const OptionsButton = styled.div`
-  position: relative;
-  top: 8px;
-  width: 90%;
-  margin: 0 5%;
-  background: #ffffff;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  &::after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 0 10px 10px;
-    border-color: #ffffff transparent;
-    display: block;
-    width: 0;
-    z-index: 1;
-    top: -10px;
-    right: 7px;
-  }
-  ul {
-    padding: 10px 0;
-    li {
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
-      padding: 15px;
-      &:hover {
-        background-color: #d8d8d8;
-      }
-    }
+  position: absolute;
+  top: 5px;
+  left: -100px;
+  width: 100px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: visibility 0.3s, opacity 0.3s;
+`;
+
+export const OptionActionButton = styled.button`
+  display: block;
+  width: 100%;
+  padding: 6px 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  color: #000000;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #ff7c1d;
   }
 `;
