@@ -42,7 +42,9 @@ function SignIn() {
         >
           비밀번호
         </InputWithLabel>
-        <Button>로그인</Button>
+        <Styled.ButtonArea>
+          <Button size="medium">로그인</Button>
+        </Styled.ButtonArea>
       </Styled.SignInForm>
       <Styled.SignUpBox>
         <p>회원이 아니시라면?</p>

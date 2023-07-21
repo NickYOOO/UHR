@@ -30,6 +30,10 @@ export const SignInForm = styled.form`
   }
 `;
 
+export const ButtonArea = styled.div`
+  margin-top: 24px;
+`;
+
 export const SignUpBox = styled.div`
   display: flex;
   justify-content: center;
@@ -45,5 +49,5 @@ export const SignUpBox = styled.div`
 export const ValidationMessage = styled.p`
   height: 16px;
   font-size: 14px;
-  color: ${({ isValid }) => (isValid ? 'green' : 'red')};
+  color: ${props => props.color};
 `;
