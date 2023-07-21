@@ -4,8 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../loading/Loading';
 import * as Style from './style';
 
-
-function HeritageImages({ ccbaKdcd, ccbaCtcd, ccbaAsno }) {
+function HeritageImages({ ccbaKdcd, ccbaCtcd, ccbaAsno, id }) {
   const [showMore, setShowMore] = useState(false);
   const [showImages, setShowImages] = useState(6);
 
@@ -35,7 +34,7 @@ function HeritageImages({ ccbaKdcd, ccbaCtcd, ccbaAsno }) {
   };
 
   const { data: images, isLoading } = useQuery(
-    ['heritageImages'],
+    ['heritageImages', id],
     async () => {
       const res = await getHeritageImg(params);
       return res;
