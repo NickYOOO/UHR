@@ -33,10 +33,10 @@ const useFormValidation = () => {
           let msg = '';
           let currentState = false;
           if (!validateValue(name, value)) {
-            msg = '사용가능한 닉네임이 아닙니다.(특수문자 제외 2~10자)';
+            msg = '사용 가능한 닉네임이 아닙니다.(특수문자 제외 2~10자)';
             currentState = false;
           } else {
-            msg = '사용가능한 닉네임입니다.';
+            msg = '사용 가능한 닉네임 형식입니다.';
             currentState = true;
           }
           setValidationMsg(prev => ({
@@ -59,7 +59,7 @@ const useFormValidation = () => {
             msg = '이메일 형식이 올바르지 않습니다.';
             currentState = false;
           } else {
-            msg = '사용가능한 이메일입니다.';
+            msg = '사용 가능한 이메일 형식입니다.';
             currentState = true;
           }
           setValidationMsg(prev => ({
@@ -80,7 +80,7 @@ const useFormValidation = () => {
             msg = '영문(대문자+소문자) 숫자 특수문자 포함 8~15자';
             currentState = false;
           } else {
-            msg = '사용가능한 비밀번호입니다.';
+            msg = '사용 가능한 비밀번호입니다.';
             currentState = true;
           }
           setValidationMsg(prev => ({
