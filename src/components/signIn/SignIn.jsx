@@ -15,7 +15,7 @@ function SignIn() {
   });
 
   const systemModal = useSelector(state => state.systemModal);
-  const { alertModal } = useSystemModal();
+  const { alertModal, closeModal } = useSystemModal();
   const navigate = useNavigate();
 
   const isEmailValid = formState.email && formState.email.trim() !== '';
@@ -80,7 +80,7 @@ function SignIn() {
           <Link to={`/signup`}>회원가입</Link>
         </Styled.SignUpBox>
       </Styled.SignInLayout>
-      {systemModal.isOpen && <SystemModal />}
+      {systemModal.isOpen && <SystemModal closeModal={closeModal} />}
     </>
   );
 }

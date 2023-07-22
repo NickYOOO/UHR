@@ -32,8 +32,17 @@ export const signUpWithFB = async (email, password) => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     return userCredential.user;
   } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    switch (error.code) {
+      case 'auth/email-already-exists':
+        error['message'] = '사용중인 이메일입니다.';
+        return Promise.reject(error);
+      case 'auth/email-already-in-use':
+        error['message'] = '사용중인 이메일입니다.';
+        return Promise.reject(error);
+      default:
+        error['message'] = '알 수 없는 오류가 발생했습니다.';
+        return Promise.reject(error);
+    }
   }
 };
 
@@ -51,10 +60,16 @@ export const signInWithFB = async (email, password) => {
     const user = userCredential.user;
   } catch (error) {
     switch (error.code) {
-      case 'auth/user-not-found' || 'auth/invalid-email':
+      case 'auth/user-not-found':
         error['message'] = '이메일이 일치하지 않습니다.';
         return Promise.reject(error);
-      case 'auth/wrong-password' || 'auth/weak-password':
+      case 'auth/invalid-email':
+        error['message'] = '이메일이 일치하지 않습니다.';
+        return Promise.reject(error);
+      case 'auth/wrong-password':
+        error['message'] = '비밀번호가 일치하지 않습니다.';
+        return Promise.reject(error);
+      case 'auth/weak-password':
         error['message'] = '비밀번호가 일치하지 않습니다.';
         return Promise.reject(error);
       case 'auth/network-request-failed':
