@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFormValidation from '../../hooks/useFormValidation';
 import InputWithLabel from '../common/input/InputWithLabel';
 import Button from '../common/Button';
@@ -9,13 +9,14 @@ import { doc, setDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import useSystemModal from '../../hooks/useSystemModal';
 import { useSelector } from 'react-redux';
-import { SystemModal } from '../systemModal/SystemModal';
+import { SystemModal, TimerModal } from '../systemModal/SystemModal';
 
 function SignUp() {
   const navigate = useNavigate();
   const { formState, validationMsg, validationState, handleJoinInputChange } = useFormValidation();
   const systemModal = useSelector(state => state.systemModal);
   const { alertModal, closeModal } = useSystemModal();
+  const [isOpenTimeModal, setIsOpenTimeModal] = useState(false);
   const onClickSignUpHandler = async e => {
     e.preventDefault();
 
@@ -28,8 +29,7 @@ function SignUp() {
       };
 
       await setDoc(doc(db, 'users', user.uid), userData);
-      // alert('회원가입 완료!');
-      navigate('/');
+      setIsOpenTimeModal(true);
     } catch (err) {
       alertModal(true, err.message);
     }
@@ -103,6 +103,13 @@ function SignUp() {
         </Styled.SignUpBox>
       </Styled.SignUpLayout>
       {systemModal.isOpen && <SystemModal closeModal={closeModal} />}
+      {isOpenTimeModal && (
+        <TimerModal
+          text={'회원가입 성공!'}
+          subText={'잠시 후 메인으로 이동합니다'}
+          setIsModalOpen={setIsOpenTimeModal}
+        />
+      )}
     </>
   );
 }
