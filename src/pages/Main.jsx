@@ -8,7 +8,7 @@ import useSystemModal from '../hooks/useSystemModal';
 
 function Main() {
   const modal = useSelector(state => state.systemModal);
-  const { alertModal, confirmModal } = useSystemModal();
+  const { alertModal, confirmModal, closeModal } = useSystemModal();
 
   const tes = () => {
     confirmModal(true, '테스트');
@@ -24,7 +24,7 @@ function Main() {
       <button onClick={tes}>테스트</button>
       <Carousel />
       <Youtube />
-      {modal.isOpen && <SystemModal />}
+      {modal.isOpen && <SystemModal closeModal={closeModal} />}
     </main>
   );
 }

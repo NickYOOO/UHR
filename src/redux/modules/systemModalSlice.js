@@ -4,7 +4,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isOpen: false,
   type: false,
-  isConfirm: false,
   msg: '',
 };
 

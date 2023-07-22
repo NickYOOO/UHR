@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSystemModal } from '../redux/modules/systemModalSlice';
 
 const useSystemModal = () => {
   const modal = useSelector(state => state.systemModal);
+  const [confirmKey, setConfirmKey] = useState('');
+  const [mutation, setMutation] = useState(null);
 
   const dispatch = useDispatch();
 
   const alertModal = (isOpen, msg) => {
-    dispatch(setSystemModal({ isOpen, msg, type: false, isConfirm: false }));
+    dispatch(setSystemModal({ isOpen, msg, type: false }));
   };
-  const confirmModal = (isOpen, msg) => {
-    dispatch(setSystemModal({ isOpen, msg, type: true, isConfirm: false }));
+  const confirmModal = (isOpen, msg, id, mu) => {
+    setConfirmKey(id);
+    setMutation(mu);
+    dispatch(setSystemModal({ isOpen, msg, type: true }));
   };
   const closeModal = () => {
     dispatch(setSystemModal({ isOpen: false, msg: '' }));
   };
-  const confirmAndClose = (isOpen, msg) => {
-    dispatch(setSystemModal({ isOpen: false, msg: '', isConfirm: true }));
+
+  const confirmDeleteComment = () => {
+    dispatch(setSystemModal({ isOpen: false, msg: '' }));
+    mutation.mutate(confirmKey);
+    setConfirmKey('');
+    setMutation(null);
   };
 
-  return { closeModal, alertModal, confirmModal, confirmAndClose };
+  return { closeModal, alertModal, confirmModal, confirmDeleteComment };
 };
 
 export default useSystemModal;

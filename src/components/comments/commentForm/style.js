@@ -24,7 +24,7 @@ export const CommentInput = styled.input`
 export const CommentButton = styled(Button)`
   margin-left: 10px;
 `;
-
+//
 export const CommentListContainer = styled.div`
   margin-top: 20px;
 `;
@@ -71,7 +71,7 @@ export const CommentButtons = styled.div`
   gap: 8px;
   align-items: center;
 `;
-
+//
 export const MoreOptionsButton = styled.button`
   position: relative;
   background-color: transparent;
