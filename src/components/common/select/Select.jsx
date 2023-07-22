@@ -4,7 +4,7 @@ import { BiSolidDownArrow } from 'react-icons/bi';
 import REGIONS from './regions';
 import PROVINCES from './provinces';
 
-function Select() {
+function Select({ onSelectRegion, onSelectProvince }) {
   const [cities, setCities] = useState([]);
   const [showProvinceOptions, setShowProvinceOptions] = useState(false);
   const [showRegionOptions, setShowRegionOptions] = useState(false);
@@ -14,18 +14,23 @@ function Select() {
   const [provinces] = useState(PROVINCES);
 
   const provinceClickHandler = ({ target }) => {
-    const provinceId = parseInt(target.value);
+    let provinceId = target.value.toString();
+    // const provinceId = parseInt(target.value);
     setSelectedRegionOption('전체');
     setCities(REGIONS[provinceId] || []);
     setSelectedProvinceOption(target.textContent);
     setShowProvinceOptions(false);
+    onSelectProvince(provinceId);
+    console.log(target.value);
   };
 
   const regionClickHandler = ({ target }) => {
-    const regionId = parseInt(target.value);
+    const regionId = target.value.toString();
+    // const regionId = parseInt(target.value);
     const regionName = target.textContent;
     setSelectedRegionOption(regionName);
     setShowRegionOptions(false);
+    onSelectRegion(regionId);
   };
 
   const provinceToggleOptions = () => {
@@ -57,18 +62,21 @@ function Select() {
           </Styled.SelectButton>
           {showProvinceOptions && (
             <Styled.SelectList>
-              {provinces.map(province => (
-                <Styled.SelectItem
-                  key={province.id}
-                  value={province.id}
-                  onMouseDown={e => {
-                    e.preventDefault();
-                  }}
-                  onClick={provinceClickHandler}
-                >
-                  {province.name}
-                </Styled.SelectItem>
-              ))}
+              {provinces.map(province => {
+                // console.log(province);
+                return (
+                  <Styled.SelectItem
+                    key={province.id}
+                    value={province.id}
+                    onMouseDown={e => {
+                      e.preventDefault();
+                    }}
+                    onClick={provinceClickHandler}
+                  >
+                    {province.name}/{province.id}
+                  </Styled.SelectItem>
+                );
+              })}
             </Styled.SelectList>
           )}
         </div>

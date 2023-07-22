@@ -10,14 +10,8 @@ export default function HeritagesTable() {
   const heritageArr = useSelector(state => state.heritagesBySearch);
   const totalCnt = useSelector(state => state.extraDataHeritagesBySearch.totalItems);
 
-  const handleOnClickTr = (key, ccbaKdcd, ccbaCtcd, ccbaAsno) => {
-    navigate(`/detail/${key}`, {
-      state: {
-        ccbaKdcd,
-        ccbaCtcd,
-        ccbaAsno,
-      },
-    });
+  const handleOnClickTr = ccbaCpno => {
+    navigate(`/detail/${ccbaCpno}`);
   };
   return (
     <>
@@ -44,15 +38,10 @@ export default function HeritagesTable() {
               const city1 = item.children[6].value.replace(/ >/g, ''); // ccbaCtcdNm
               const city2 = item.children[7].value.replace(/ >/g, ''); // ccsiName
 
-              const ccbaKdcd = item.children[9].value;
-              const ccbaCtcd = item.children[10].value;
-              const ccbaAsno = item.children[11].value;
+              const ccbaCpno = item.children[13].value;
 
               return (
-                <Style.TableRow
-                  key={key}
-                  onClick={() => handleOnClickTr(key, ccbaKdcd, ccbaCtcd, ccbaAsno)}
-                >
+                <Style.TableRow key={key} onClick={() => handleOnClickTr(ccbaCpno)}>
                   <Style.TableCell>{num}</Style.TableCell>
                   <Style.TableCell>{kind}</Style.TableCell>
                   <Style.TableCell>
