@@ -13,3 +13,11 @@ export const getHeritageComments = async hId => {
 export const addHeritageComment = async newComment => {
   await axios.post(`${process.env.REACT_APP_SERVER_URL}/comments`, newComment);
 };
+
+export const deleteHeritageComment = async id => {
+  await axios.delete(`${process.env.REACT_APP_SERVER_URL}/comments/${id}`);
+};
+
+export const editHeritageComment = async ({ id, updatedComment }) => {
+  await axios.patch(`${process.env.REACT_APP_SERVER_URL}/comments/${id}`, updatedComment);
+};
