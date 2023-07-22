@@ -4,7 +4,7 @@ import HeritageDetail from '../components/heritageDetail/HeritageDetail';
 import HeritageImages from '../components/heritageImages/HeritageImages';
 import CommentForm from '../components/comments/commentForm/CommentForm';
 import KakaoMap from '../components/kakaoMap/KakaoMap';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getHeritageInfoById } from '../api/heritage';
 import Loading from '../components/loading/Loading';

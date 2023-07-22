@@ -17,7 +17,7 @@ export default function HeritagesListQuery(searchedParam) {
   let searchedHeritageArr = [];
 
   const { data, isLoading } = useQuery({
-    queryKey: ['heritageListBySearch', currentPage],
+    queryKey: ['heritageListBySearch', params],
     queryFn: () => getHeritagesBySearch(params),
     refetchOnWindowFocus: false,
   });

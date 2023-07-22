@@ -33,3 +33,7 @@ export const TableCell = styled.td`
   text-align: left;
   cursor: pointer;
 `;
+
+export const DataResultParagraph = styled.div`
+  padding-left: 30px;
+`;
