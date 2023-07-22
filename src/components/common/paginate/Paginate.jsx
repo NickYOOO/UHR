@@ -23,7 +23,7 @@ export default function Paginate() {
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}

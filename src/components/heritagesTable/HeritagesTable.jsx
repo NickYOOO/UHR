@@ -15,9 +15,9 @@ export default function HeritagesTable() {
   };
   return (
     <>
-      <p>
+      <Style.DataResultParagraph>
         조회된 총 데이터 건 수: <strong style={{ fontWeight: 'bolder' }}>{totalCnt}</strong>
-      </p>
+      </Style.DataResultParagraph>
       <Style.TableContainer>
         <Style.Table>
           <thead>

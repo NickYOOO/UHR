@@ -1,5 +1,5 @@
 const PROVINCES = [
-  { id: 'ZZ', name: '전체' },
+  { id: 77, name: '전체' },
   { id: 11, name: '서울특별시' },
   { id: 31, name: '경기도' },
   { id: 23, name: '인천광역시' },
@@ -17,6 +17,7 @@ const PROVINCES = [
   { id: 25, name: '대전광역시' },
   { id: 45, name: '세종특별자치시' },
   { id: 50, name: '제주특별자치도' },
+  { id: 'ZZ', name: '기타' },
 ];
 
 export default PROVINCES;

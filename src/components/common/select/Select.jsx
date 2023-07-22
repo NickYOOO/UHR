@@ -73,7 +73,7 @@ function Select({ onSelectRegion, onSelectProvince }) {
                     }}
                     onClick={provinceClickHandler}
                   >
-                    {province.name}/{province.id}
+                    {province.name}
                   </Styled.SelectItem>
                 );
               })}

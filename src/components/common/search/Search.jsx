@@ -4,15 +4,22 @@ import InputWithLabel from '../input/InputWithLabel';
 import Button from '../Button';
 import * as Styled from './style';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setHeritagesBySearch } from '../../../redux/modules/heritagesBySearchSlice';
+import {
+  setCurrentPage,
+  setTotalItems,
+} from '../../../redux/modules/extraDataHeritagesBySearchSlice';
 
 export default function Search({ bg }) {
   const navigate = useNavigate();
   const [provinceId, setProvinceId] = useState('00');
   const [regionId, setRegionId] = useState('00');
   const [heritageName, setHeritageName] = useState('');
+  const dispatch = useDispatch();
 
   const serchButtonClickHandler = () => {
-    navigate('/list', {
+    navigate(`/list/${provinceId}&${regionId}&${heritageName}`, {
       state: {
         ccbaCtcd: provinceId,
         ccbaLcto: regionId,
@@ -28,6 +35,9 @@ export default function Search({ bg }) {
       regionId,
       heritageName
     );
+    dispatch(setHeritagesBySearch([]));
+    dispatch(setCurrentPage(1));
+    dispatch(setTotalItems(0));
   };
 
   return (

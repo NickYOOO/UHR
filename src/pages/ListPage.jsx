@@ -6,13 +6,14 @@ import { useSelector } from 'react-redux';
 import Layout from '../components/common/layout/Layout';
 import { styled } from 'styled-components';
 import { useLocation } from 'react-router-dom';
+import Search from '../components/common/search/Search';
 // 검색 컴포넌트 import 해오면 됩니다
 
 const ListPage = () => {
   const location = useLocation();
   let { ccbaCtcd, ccbaLcto, ccbaMnm1 } = location.state;
   const searchParams = { ccbaCtcd, ccbaLcto, ccbaMnm1 };
-  if (ccbaCtcd === '00') {
+  if (ccbaCtcd === '00' || ccbaCtcd === '77') {
     ccbaCtcd = '';
   }
   if (ccbaCtcd === '0') {
@@ -36,9 +37,10 @@ const ListPage = () => {
 
   return (
     <ListPageBox>
-      {/* 검색 컴포넌트 여기에 넣으면 됩니다 */}
-
       <Layout>
+        <SearchBox>
+          <Search bg="#390000" />
+        </SearchBox>
         <HeritagesTable />
         <Paginate />
       </Layout>
@@ -52,4 +54,6 @@ const ListPageBox = styled.div`
   padding: 60px 0px;
 `;
 
-// const SearchPositionBox = styled.div``;
+const SearchBox = styled.div`
+  padding-bottom: 60px;
+`;
