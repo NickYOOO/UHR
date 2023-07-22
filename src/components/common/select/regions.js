@@ -302,4 +302,4 @@ const REGIONS = {
   ],
 };
 
-export default REGIONS
+export default REGIONS;
