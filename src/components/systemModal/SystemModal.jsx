@@ -28,13 +28,13 @@ export const SystemModal = ({ confirmAndClose, closeModal }) => {
   );
 };
 
-export const TimerModal = ({ isModalOpen, setIsModalOpen, text, subText }) => {
+export const TimerModal = ({ setIsModalOpen, text, subText }) => {
   useEffect(() => {
     document.body.style = 'overflow: hidden';
 
     const timer = setTimeout(() => {
       setIsModalOpen(false);
-    }, 1000);
+    }, 1500);
 
     return () => {
       document.body.style = 'overflow: auto';
@@ -44,7 +44,7 @@ export const TimerModal = ({ isModalOpen, setIsModalOpen, text, subText }) => {
   });
 
   return createPortal(
-    <Styled.ModalLayout isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+    <Styled.ModalLayout >
       <Styled.ModalBox>
         <Styled.ModalParagraph>{text}</Styled.ModalParagraph>
         <Styled.ModalSpan>{subText}</Styled.ModalSpan>
