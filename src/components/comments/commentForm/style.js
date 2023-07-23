@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import Button from '../../common/button/Button';
 
-export const CommentFormContainer = styled.div`
+export const CommentFormContainer = styled.form`
   display: flex;
   align-items: center;
   margin-bottom: 20px;

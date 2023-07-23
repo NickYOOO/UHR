@@ -2,17 +2,19 @@ import { styled } from 'styled-components';
 
 export const MoreOptionsButton = styled.button`
   position: relative;
+
   background-color: transparent;
   padding: 4px 8px;
   border: none;
-  float: right;
+  cursor: pointer;
 `;
 
 export const OptionsBox = styled.div`
   position: absolute;
   top: 5px;
-  left: -100px;
+  right: 50px;
   width: 100px;
+  list-style: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 8px;

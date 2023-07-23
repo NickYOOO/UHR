@@ -30,20 +30,18 @@ const Dots = props => {
   };
 
   return (
-    <Style.MoreOptionsButton
-      onBlur={() => {
-        setIsOpen(false);
-      }}
-    >
-      <HiDotsVertical
-        size="25"
-        color="#000000"
+    <>
+      <Style.MoreOptionsButton
         onClick={() => {
           setSelectedComment(comment);
-          setEditContent('');
           setIsOpen(true);
         }}
-      />
+        onBlur={() => {
+          setIsOpen(false);
+        }}
+      >
+        <HiDotsVertical size="25" color="#000000" />
+      </Style.MoreOptionsButton>
       {selectedComment === comment && isOpen && (
         <Style.OptionsBox>
           <Style.OptionActionButton onMouseDown={() => handleDeleteComment(comment.id)}>
@@ -60,7 +58,7 @@ const Dots = props => {
           </Style.OptionActionButton>
         </Style.OptionsBox>
       )}
-    </Style.MoreOptionsButton>
+    </>
   );
 };
 

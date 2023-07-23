@@ -7,7 +7,7 @@ const CommentList = props => {
 
   return (
     <Style.CommentListContainer>
-      {comments.map(comment => (
+      {comments.toReversed().map(comment => (
         <Style.CommentItem key={comment.id}>
           <div>
             <Style.CommentHeader>
