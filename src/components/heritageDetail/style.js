@@ -17,6 +17,12 @@ export const HeritageDetailBox = styled.div`
   }
 `;
 
+export const HeritageImageParagraph = styled.p`
+  width: 550px;
+  text-align: center;
+  font-weight: 600;
+`;
+
 export const HeritageImage = styled.img`
   width: 550px;
   height: 350px;

@@ -21,7 +21,6 @@ function Select({ onSelectRegion, onSelectProvince }) {
     setSelectedProvinceOption(target.textContent);
     setShowProvinceOptions(false);
     onSelectProvince(provinceId);
-    console.log(target.value);
   };
 
   const regionClickHandler = ({ target }) => {
@@ -63,7 +62,6 @@ function Select({ onSelectRegion, onSelectProvince }) {
           {showProvinceOptions && (
             <Styled.SelectList>
               {provinces.map(province => {
-                // console.log(province);
                 return (
                   <Styled.SelectItem
                     key={province.id}
