@@ -18,7 +18,6 @@ const MyPage = () => {
     ['comment', 'myPage', currentUserUid],
     async () => await getComment(currentUserUid)
   );
-  console.log(data);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -74,33 +73,37 @@ const MyPage = () => {
       </MyPageBox>
       <Separator />
       <CommentParagraph>작성한 댓글</CommentParagraph>
-      <CommentTable>
-        <thead>
-          <CommentRow>
-            <CommentHeader>문화재명</CommentHeader>
-            <CommentHeader>작성 댓글</CommentHeader>
-            <CommentHeader>작성일자</CommentHeader>
-          </CommentRow>
-        </thead>
-        <tbody>
-          {data &&
-            data.map((comment, index) => {
-              return (
-                <CommentRow key={index}>
-                  <CommentCell
-                    onClick={() => {
-                      goToDetail(comment.hId);
-                    }}
-                  >
-                    {comment.hName}
-                  </CommentCell>
-                  <CommentCell>{comment.content}</CommentCell>
-                  <CommentCell>{comment.modifyTime}</CommentCell>
-                </CommentRow>
-              );
-            })}
-        </tbody>
-      </CommentTable>
+      {data?.length !== 0 ? (
+        <CommentTable>
+          <thead>
+            <CommentRow>
+              <CommentHeader>문화재명</CommentHeader>
+              <CommentHeader>작성 댓글</CommentHeader>
+              <CommentHeader>작성일자</CommentHeader>
+            </CommentRow>
+          </thead>
+          <tbody>
+            {data &&
+              data.map((comment, index) => {
+                return (
+                  <CommentRow key={index}>
+                    <CommentCell
+                      onClick={() => {
+                        goToDetail(comment.hId);
+                      }}
+                    >
+                      {comment.hName}
+                    </CommentCell>
+                    <CommentCell>{comment.content}</CommentCell>
+                    <CommentCell>{comment.modifyTime}</CommentCell>
+                  </CommentRow>
+                );
+              })}
+          </tbody>
+        </CommentTable>
+      ) : (
+        <NoCommentParagraph>작성한 댓글이 없습니다</NoCommentParagraph>
+      )}
     </MyPageLayout>
   );
 };
@@ -213,4 +216,9 @@ const CommentCell = styled.td`
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+`;
+
+const NoCommentParagraph = styled.p`
+  margin-top: 50px;
+  text-align: center;
 `;
