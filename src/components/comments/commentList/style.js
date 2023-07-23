@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 
-export const CommentListContainer = styled.div`
+export const CommentListContainer = styled.ul`
   margin-top: 20px;
 `;
 
-export const CommentItem = styled.div`
+export const CommentItemContent = styled.div`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -12,6 +12,8 @@ export const CommentItem = styled.div`
   padding: 10px;
   margin-bottom: 10px;
 `;
+
+export const CommentItem = styled.li``;
 
 export const CommentHeader = styled.div`
   display: flex;
