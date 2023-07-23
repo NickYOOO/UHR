@@ -2,18 +2,25 @@ import React from 'react';
 import * as Style from './style';
 
 function HeritageDetail({ information }) {
-  
   return (
     <Style.HeritageDetailLayout>
       <Style.HeritageDetailBox>
-        <Style.HeritageImage src={information[18].value} alt="" />
+        {information[18].value !== '' ? (
+          <Style.HeritageImage src={information[18].value} alt="" />
+        ) : (
+          <Style.HeritageImageParagraph>대표 이미지가 없습니다</Style.HeritageImageParagraph>
+        )}
         <Style.HeritageDetailTable>
           <tbody>
             <tr>
               <th>문화재명</th>
-              <td>
-                {information[2].value}&nbsp;({information[3].value})
-              </td>
+              {information[3].value !== '>' ? (
+                <td>
+                  {information[2].value}&nbsp;({information[3].value})
+                </td>
+              ) : (
+                <td>{information[2].value}</td>
+              )}
             </tr>
             <tr>
               <th>문화재 종목</th>
@@ -26,13 +33,15 @@ function HeritageDetail({ information }) {
             <tr>
               <th>문화재분류</th>
               <td>
-                {information[4].value} / {information[5].value} / {information[6].value} /&nbsp;
-                {information[7].value}
+                {information[4].value.replace(/>/g, '')}&nbsp;/&nbsp;
+                {information[5].value.replace(/>/g, '')}&nbsp;/&nbsp;
+                {information[6].value.replace(/>/g, '')}&nbsp;/&nbsp;
+                {information[7].value.replace(/>/g, '')}
               </td>
             </tr>
             <tr>
               <th>시대</th>
-              <td>{information[13].value}</td>
+              <td>{information[13].value.replace(/>/g, '')}</td>
             </tr>
             <tr>
               <th>소재지 상세</th>

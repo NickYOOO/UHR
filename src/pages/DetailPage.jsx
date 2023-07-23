@@ -41,7 +41,9 @@ function DetailPage() {
   return (
     <MainBoxLayout>
       <HeritageDetail information={data.infoBody} />
-      <KakaoMap latitude={latitude.value} longitude={longitude.value} imageUrl={imageUrl.value} />
+      {latitude.value != 0 && longitude.value != 0 ? (
+        <KakaoMap latitude={latitude.value} longitude={longitude.value} imageUrl={imageUrl.value} />
+      ) : null}
       <HeritageImages {...params} id={param.id} />
       <CommentForm
         hId={data.infoHead[3].value}

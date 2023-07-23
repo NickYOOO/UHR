@@ -26,15 +26,6 @@ export default function Search({ bg }) {
         ccbaMnm1: heritageName,
       },
     });
-    console.log(
-      'provinceId',
-      typeof provinceId,
-      provinceId,
-      'regionId',
-      typeof regionId,
-      regionId,
-      heritageName
-    );
     dispatch(setHeritagesBySearch([]));
     dispatch(setCurrentPage(1));
     dispatch(setTotalItems(0));
