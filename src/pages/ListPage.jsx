@@ -7,12 +7,11 @@ import Layout from '../components/common/layout/Layout';
 import { styled } from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import Search from '../components/common/search/Search';
-// 검색 컴포넌트 import 해오면 됩니다
 
 const ListPage = () => {
   const location = useLocation();
   let { ccbaCtcd, ccbaLcto, ccbaMnm1 } = location.state;
-  const searchParams = { ccbaCtcd, ccbaLcto, ccbaMnm1 };
+
   if (ccbaCtcd === '00' || ccbaCtcd === '77') {
     ccbaCtcd = '';
   }
@@ -50,7 +49,7 @@ const ListPage = () => {
 
 export default ListPage;
 
-const ListPageBox = styled.div`
+const ListPageBox = styled.main`
   padding: 60px 0px;
 `;
 

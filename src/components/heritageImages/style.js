@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeritageImagesLayout = styled.div`
+export const HeritageImagesLayout = styled.section`
   position: relative;
 `;
 

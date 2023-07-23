@@ -35,7 +35,11 @@ const CommentList = props => {
             <div>
               <Style.CommentHeader>
                 <Style.CommentUser>{comment.userName}</Style.CommentUser>
-                <Style.CommentTime>{comment.originTime}</Style.CommentTime>
+                <Style.CommentTime>
+                  {comment.originTime === comment.modifyTime
+                    ? comment.originTime
+                    : `${comment.modifyTime}(수정됨)`}
+                </Style.CommentTime>
               </Style.CommentHeader>
               <Style.CommentContent>{comment.content}</Style.CommentContent>
             </div>

@@ -13,7 +13,7 @@ import Loading from '../loading/Loading';
 
 const Carousel = () => {
   const navigate = useNavigate();
-  const [swiper, setSwiper] = useState(null);
+
   const { data: heritages, isLoading } = useQuery(['carousel'], getTopTenHeritages, {
     select: ({ children }) => {
       const items = children
@@ -45,8 +45,8 @@ const Carousel = () => {
     }
   );
 
-  if(isLoading || imgIsLoading) {
-    return <Loading text={'이미지 불러오는 중...'} />
+  if (isLoading || imgIsLoading) {
+    return <Loading text={'이미지 불러오는 중...'} />;
   }
 
   const goToDetail = item => {
@@ -55,10 +55,6 @@ const Carousel = () => {
       state: { ccbaKdcd: item[9].value, ccbaCtcd: item[10].value, ccbaAsno: item[11].value },
     });
   };
-
-  if (isLoading || imgIsLoading) {
-    return <div style={{ width: '100%', height: '317px' }}>로딩중</div>;
-  }
 
   return (
     <Styled.CarouselLayout>
@@ -93,7 +89,7 @@ const Carousel = () => {
               <SwiperSlide key={shortid.generate()} onClick={() => goToDetail(item)}>
                 <Styled.Figure>
                   <Styled.FigureImg src={imgUrl[i]} alt={item[4].value} />
-                  <Styled.FigureCaption>{item[4].value}</Styled.FigureCaption>
+                  <Styled.FigureCaption>{item[4].value.replace(/ >/g, '')}</Styled.FigureCaption>
                 </Styled.Figure>
               </SwiperSlide>
             );

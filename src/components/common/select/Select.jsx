@@ -14,8 +14,7 @@ function Select({ onSelectRegion, onSelectProvince }) {
   const [provinces] = useState(PROVINCES);
 
   const provinceClickHandler = ({ target }) => {
-    let provinceId = target.value.toString();
-    // const provinceId = parseInt(target.value);
+    const provinceId = target.value.toString();
     setSelectedRegionOption('전체');
     setCities(REGIONS[provinceId] || []);
     setSelectedProvinceOption(target.textContent);
@@ -25,7 +24,6 @@ function Select({ onSelectRegion, onSelectProvince }) {
 
   const regionClickHandler = ({ target }) => {
     const regionId = target.value.toString();
-    // const regionId = parseInt(target.value);
     const regionName = target.textContent;
     setSelectedRegionOption(regionName);
     setShowRegionOptions(false);

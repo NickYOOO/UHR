@@ -10,13 +10,15 @@ import useSystemModal from '../../../hooks/useSystemModal';
 import { SystemModal } from '../../systemModal/SystemModal';
 import { useSelector } from 'react-redux';
 import CommentList from '../commentList/CommentList';
+import { useNavigate } from 'react-router-dom';
 
 const CommentForm = ({ hId, hName }) => {
+  const navigate = useNavigate();
   const [comment, setComment] = useState('');
   const [userName, setUserName] = useState('');
 
   const systemModal = useSelector(state => state.systemModal);
-  const { closeModal, confirmDeleteComment, confirmModal } = useSystemModal();
+  const { alertModal, closeModal, confirmDeleteComment, confirmModal } = useSystemModal();
 
   const queryClient = useQueryClient();
   const { data: comments, isLoading } = useQuery(
@@ -53,7 +55,8 @@ const CommentForm = ({ hId, hName }) => {
     return comment.trim() === '';
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async e => {
+    e.preventDefault();
     if (isCommentEmpty()) {
       return false;
     }
@@ -74,6 +77,14 @@ const CommentForm = ({ hId, hName }) => {
     setComment('');
   };
 
+  const onChangeCommentInput = ({ target }) => {
+    if (!auth.currentUser) {
+      alertModal(true, '로그인이 필요합니다.');
+      navigate('/signin');
+    }
+    setComment(target.value);
+  };
+
   const currentUserUid = auth.currentUser ? auth.currentUser.uid : null;
 
   const listProps = {
@@ -84,25 +95,23 @@ const CommentForm = ({ hId, hName }) => {
   };
 
   return (
-    <>
-      <Style.CommentFormContainer>
+    <section>
+      <Style.CommentFormContainer onSubmit={handleSubmit}>
         <Style.CommentLabel htmlFor="commentInput">내용 </Style.CommentLabel>
         <Style.CommentInput
           id="commentInput"
           type="text"
           placeholder="댓글을 입력하세요..."
           value={comment}
-          onChange={e => setComment(e.target.value)}
+          onChange={onChangeCommentInput}
         />
-        <Style.CommentButton onClick={handleSubmit} disabled={isCommentEmpty()}>
-          등록
-        </Style.CommentButton>
+        <Style.CommentButton disabled={isCommentEmpty()}>등록</Style.CommentButton>
       </Style.CommentFormContainer>
       <CommentList {...listProps} />
       {systemModal.isOpen && (
         <SystemModal confirmAndClose={confirmDeleteComment} closeModal={closeModal} />
       )}
-    </>
+    </section>
   );
 };
 

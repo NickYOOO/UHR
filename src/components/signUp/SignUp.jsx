@@ -3,7 +3,7 @@ import useFormValidation from '../../hooks/useFormValidation';
 import InputWithLabel from '../common/input/InputWithLabel';
 import Button from '../common/button/Button';
 import * as Styled from './style';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { db, signUpWithFB } from '../../api/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import useSystemModal from '../../hooks/useSystemModal';
@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 import { SystemModal, TimerModal } from '../systemModal/SystemModal';
 
 function SignUp() {
-  const navigate = useNavigate();
   const { formState, validationMsg, validationState, handleJoinInputChange } = useFormValidation();
   const systemModal = useSelector(state => state.systemModal);
   const { alertModal, closeModal } = useSystemModal();

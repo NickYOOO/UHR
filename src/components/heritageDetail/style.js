@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeritageDetailLayout = styled.div`
+export const HeritageDetailLayout = styled.section`
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;

@@ -30,7 +30,7 @@ function Header() {
 
   const handleLogout = async () => {
     await signOutWithFB();
-    navigate('/')
+    navigate('/');
   };
 
   return (
