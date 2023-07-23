@@ -3,14 +3,12 @@ import { getHeritagesBySearch } from '../../api/heritage';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../loading/Loading';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setHeritagesBySearch } from '../../redux/modules/heritagesBySearchSlice';
 import { setTotalItems } from '../../redux/modules/extraDataHeritagesBySearchSlice';
 
 export default function HeritagesListQuery(searchedParam) {
   const dispatch = useDispatch();
-
-  const currentPage = useSelector(state => state.extraDataHeritagesBySearch.currentPage);
 
   // const params = `ccbaCtcd=11&ccbaMnm1=탑&pageIndex=${page}`;
   const params = searchedParam;
