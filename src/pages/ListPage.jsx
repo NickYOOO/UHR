@@ -39,7 +39,7 @@ const ListPage = () => {
     <ListPageBox>
       <Layout>
         <SearchBox>
-          <Search bg="#390000" />
+          <Search bg="#082141ad" />
         </SearchBox>
         <HeritagesTable />
         <Paginate />
