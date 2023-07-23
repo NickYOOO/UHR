@@ -1,6 +1,6 @@
 const REGIONS = {
   11: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '종로구' },
     { id: 12, name: '중구' },
     { id: 13, name: '용산구' },
@@ -30,7 +30,7 @@ const REGIONS = {
     { id: 'ZZ', name: '서울전역' },
   ],
   31: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '수원시' },
     { id: 12, name: '성남시' },
     { id: 13, name: '의정부시' },
@@ -65,7 +65,7 @@ const REGIONS = {
     { id: 'ZZ', name: '경기전역' },
   ],
   23: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '중구' },
     { id: 12, name: '동구' },
     { id: 20, name: '미추홀구' },
@@ -79,7 +79,7 @@ const REGIONS = {
     { id: 'ZZ', name: '인천전역' },
   ],
   32: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '춘천시' },
     { id: 12, name: '원주시' },
     { id: 13, name: '강릉시' },
@@ -103,7 +103,7 @@ const REGIONS = {
     { id: 'ZZ', name: '강원전역' },
   ],
   33: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 20, name: '청주시' },
     { id: 12, name: '충주시' },
     { id: 13, name: '제천시' },
@@ -118,7 +118,7 @@ const REGIONS = {
     { id: 'ZZ', name: '충북전역' },
   ],
   34: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '천안시' },
     { id: 12, name: '공주시' },
     { id: 15, name: '서산시' },
@@ -137,7 +137,7 @@ const REGIONS = {
     { id: 'ZZ', name: '충남전역' },
   ],
   35: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '전주시' },
     { id: 12, name: '군산시' },
     { id: 15, name: '남원시' },
@@ -155,7 +155,7 @@ const REGIONS = {
     { id: 'ZZ', name: '전북전역' },
   ],
   36: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '목포시' },
     { id: 12, name: '여수시' },
     { id: 13, name: '순천시' },
@@ -184,7 +184,7 @@ const REGIONS = {
     { id: 'ZZ', name: '전남전역' },
   ],
   37: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '포항시' },
     { id: 12, name: '경주시' },
     { id: 13, name: '김천시' },
@@ -210,7 +210,7 @@ const REGIONS = {
     { id: 'ZZ', name: '경북전역' },
   ],
   38: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 13, name: '진주시' },
     { id: 50, name: '창원시' },
     { id: 18, name: '김해시' },
@@ -233,7 +233,7 @@ const REGIONS = {
     { id: 'ZZ', name: '경남전역' },
   ],
   22: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '중구' },
     { id: 12, name: '동구' },
     { id: 13, name: '서구' },
@@ -246,7 +246,7 @@ const REGIONS = {
     { id: 32, name: '군위군' },
   ],
   26: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: '01', name: '남구' },
     { id: '02', name: '동구' },
     { id: '03', name: '북구' },
@@ -255,7 +255,7 @@ const REGIONS = {
     { id: 'ZZ', name: '울산전역' },
   ],
   21: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '중구' },
     { id: 12, name: '서구' },
     { id: 13, name: '동구' },
@@ -275,7 +275,7 @@ const REGIONS = {
     { id: 'ZZ', name: '부산전역' },
   ],
   24: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '동구' },
     { id: 12, name: '서구' },
     { id: 13, name: '북구' },
@@ -284,7 +284,7 @@ const REGIONS = {
     { id: 'ZZ', name: '광주전역' },
   ],
   25: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: 11, name: '동구' },
     { id: 12, name: '중구' },
     { id: 13, name: '서구' },
@@ -292,9 +292,9 @@ const REGIONS = {
     { id: 15, name: '대덕구' },
     { id: 'ZZ', name: '대전전역' },
   ],
-  45: [{ id: '00', name: '세종시전역' }],
+  45: [{ id: 77, name: '세종시전역' }],
   50: [
-    { id: '00', name: '전체' },
+    { id: 77, name: '전체' },
     { id: '01', name: '제주시' },
     { id: '02', name: '서귀포시' },
     { id: '03', name: '제주도일원' },

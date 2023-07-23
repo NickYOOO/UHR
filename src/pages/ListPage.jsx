@@ -18,6 +18,18 @@ const ListPage = () => {
   if (ccbaCtcd === '0') {
     ccbaCtcd = 'ZZ';
   }
+  if (ccbaLcto === '00' || ccbaLcto === '77') {
+    ccbaLcto = '';
+  }
+  if (ccbaLcto === '1') {
+    ccbaLcto = '01';
+  }
+  if (ccbaLcto === '2') {
+    ccbaLcto = '02';
+  }
+  if (ccbaLcto === '3') {
+    ccbaLcto = '03';
+  }
   if (ccbaLcto === '0') {
     ccbaLcto = 'ZZ';
   }
