@@ -73,7 +73,7 @@ export const signInWithFB = async (email, password) => {
         error['message'] = '비밀번호가 일치하지 않습니다.';
         return Promise.reject(error);
       case 'auth/network-request-failed':
-        error['message'] = '네트워크 연결에 실패 하였습니다.';
+        error['message'] = '네트워크 연결에 실패하였습니다.';
         return Promise.reject(error);
       default:
         error['message'] = '이메일 또는 비밀번호를 확인하세요';
