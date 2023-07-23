@@ -2,6 +2,7 @@ import React from 'react';
 import * as Styled from './style';
 import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiNotion } from 'react-icons/si';
+import ScrollToTop from '../common/scrollToTop/ScrollToTop';
 
 function Footer() {
   //****** 지완:  404 page footer 숨기기
@@ -25,6 +26,7 @@ function Footer() {
           <SiNotion size="35" color="#ffffff" />
         </a>
       </Styled.FooterBox>
+      <ScrollToTop />
     </Styled.FooterLayout>
   );
 }
