@@ -9,7 +9,11 @@
 | 임지영 | 최윤서 | 노진철 | 유지완 | 전수정 |
 
 ---
+## 시연 영상
+[유튜브 링크](https://www.youtube.com/watch?v=DuDZBfDEnB8)
 
+
+---
 ## 깃 플로우 전략
 
 - main
@@ -20,6 +24,8 @@
   - detail
   - comment
   - common
+  - header
+  - footer
 
 ---
 
@@ -151,3 +157,15 @@ span : '컴포넌트명'Span
   transition: 300ms;
 }
 ```
+
+## API 명세
+| Feature 	| Method 	| URL 	| Query String 	| Request Body 	| Response 	| 비고 	|
+|---	|---	|---	|---	|---	|---	|---	|
+| 목록 조회 	| GET 	| http://www.cha.go.kr/<br>cha/SearchKindOpenapiList.do 	| ?:ccbaKdcd&:<br>ccbaCtcd&:<br>ccbaMnm1&:<br>pageIndex 	|  	| {"result": <br>{"ccbaKdcd": <br>"종목코드", "ccbaAsno":<br> "관리번호", "ccbaCtcd":<br> "시도코드", "ccbaCpno":<br> "문화재연계번호", "longitude":<br> "경도", "latitude":<br> "위도", "item":<br>[{"ccmaName":<br> "문화재종목", "crltsnoNm":<br> "1", "ccbaMnm1":<br> "문화재명(국문)", "ccbaMnm2":<br> "문화재명(한자)", "gcodeName":<br> "문화재분류", "bcodeName":<br> "문화재분류2", "mcodeName":<br> "문화재분류3", "scodeName":<br> "문화재분류4", "ccbaQuan": <br>"수량", "ccbaAsdt":<br> "지정(등록일)", "ccbaCtcdNm": <br>"시도명", "ccsiName":<br> "시군구명", "ccbaLcad": <br>"소재지 상세", "ccceName":<br> "시대", "ccbaPoss":<br> "소유자", "ccbaAdmin":<br> "관리자", "ccbaCncl": <br>"지정해제여부 (Y, N)", "ccbaCndt": <br>{"content": "내용"}, "imageUrl": <br>"메인노출이미지URL", "content":<br> "내용"}]}} 	| ccbaKdcd:종목코드<br><br>ccbaCtcd:시도코드<br><br>ccbaMnm1:문화재명(국문)<br><br>pageIndex:페이지 	|
+| 상세보기 조회 	| GET 	| http://www.cha.go.kr/<br>cha/SearchKindOpenapiDt.do 	| ?:ccbaKdcd&:<br>ccbaAsno&:<br>ccbaCtcd 	|  	| {"result": {"ccbaKdcd":<br> "종목코드", "ccbaAsno":<br> "관리번호", "ccbaCtcd":<br> "시도코드", "ccbaCpno":<br> "문화재연계번호", "longitude":<br> "경도", "latitude":<br> "위도", "item": {"ccmaName":<br> "문화재종목", "crltsnoNm":<br> "1", "ccbaMnm1":<br>"문화재명(국문)", "ccbaMnm2": <br>"문화재명(한자)", "gcodeName":<br> "문화재분류", "bcodeName":<br> "문화재분류2", "mcodeName":<br> "문화재분류3", "scodeName":<br> "문화재분류4", "ccbaQuan":<br> "수량","ccbaAsdt":<br> "지정(등록일)","ccbaCtcdNm":<br> "시도명", "ccsiName":<br> "시군구명", "ccbaLcad":<br> "소재지 상세", "ccceName":<br> "시대", "ccbaPoss":<br> "소유자","ccbaAdmin":<br> "관리자", "ccbaCncl":<br> "지정해제여부 (Y, N)","ccbaCndt":<br> {"content": "내용"}, "imageUrl":<br> "메인노출이미지URL", <br>"content": "내용"}}} 	| ccbaKdcd:종목코드<br><br>ccbaAsno:관리번호<br><br>ccbaCtcd:시도코드 	|
+| 이미지 조회 	| GET 	| http://www.cha.go.kr/<br>cha/SearchImageOpenapi.do 	| ?:ccbaKdcd&:<br>ccbaAsno&:<br>ccbaCtcd 	|  	|  	| ccbaKdcd: 분류종목<br><br>ccbaAsno: 관리번호<br><br>ccbaCtcd: 시도코드 	|
+| 지도 조회 	| GET 	| https://map.kakao.com/<br>link/map/:latitude,:longitude 	|  	|  	|  	| latitude: 위도<br><br>longitude: 경도 	|
+| 댓글 작성 	| POST 	| /comments 	|  	| {"id": "고유 id",<br> "hId":"문화재연계번호",<br> "hName":"문화재명",<br> "user": "작성자 id",<br>"userName": "작성자 닉네임",<br> "content": "내용",<br> "originTime":"작성 시간",<br> "modifyTime": "수정 시간"} 	|  	|  	|
+| 댓글 조회 	| GET 	| /comments/:id 	|  	|  	| {"id": "고유 id",<br> "hId": "문화재연계번호", "hName":<br> "문화재명", "user":<br> "작성자 id", "userName":<br> "작성자 닉네임", "content":<br> "내용", "originTime": <br>"작성 시간", "modifyTime": <br>"수정 시간"} 	|  	|
+| 댓글 수정 	| PATCH 	| /comments/:id 	|  	| {"content": <br>"내용", "modifyTime":<br> "수정 시간"} 	|  	|  	|
+| 댓글 삭제 	| DELETE 	| /comments/:id 	|  	| {"id": "고유 id", "hId":<br> "문화재연계번호"} 	|  	|  	|

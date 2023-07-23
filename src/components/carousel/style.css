@@ -1,0 +1,35 @@
+.swiper {
+  width: 90%;
+  height: 100%;
+}
+.swiper-wrapper {
+  padding-top: 50px;
+}
+
+.swiper-slide {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 20px 40px;
+  border-top: 1px solid #777;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+
+.swiper .swiper-button-next {
+  top: 25px;
+  right: 10px;
+}
+.swiper .swiper-button-prev {
+  top: 25px;
+  left: auto;
+  right: 50px;
+}
+.swiper .swiper-button-next::after,
+.swiper .swiper-button-prev::after {
+  color: #222;
+  font-size: 20px;
+}

@@ -1,16 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "title": "할일 1",
-      "contents": "리액트 공부",
-      "isDone": false
-    },
-    {
-      "id": 2,
-      "title": "할일2",
-      "contents": "스프링 공부",
-      "isDone": true
-    }
-  ]
+  "comments": []
 }

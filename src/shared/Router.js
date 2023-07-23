@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
-import DetailPage from '../pages/DetailPage';
-import ListPage from '../pages/ListPage';
+import Footer from '../components/footer/Footer';
+import SignInPage from '../pages/SignInPage';
+import SignUpPage from '../pages/SignUpPage';
+import MyPage from '../pages/MyPage';
 import Main from '../pages/Main';
+import ListPage from '../pages/ListPage';
+import DetailPage from '../pages/DetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const Router = () => {
@@ -13,8 +16,11 @@ const Router = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/list" element={<ListPage />} />
+        <Route path="/list/:id" element={<ListPage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

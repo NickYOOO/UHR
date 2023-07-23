@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Router from './shared/Router';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import GlobalStyles from './globalStyle/globalStyle';
 import './assets/font/font.css';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import store from './redux/config/configStore';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {},
+  },
+});
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalStyles />
-      <Router />;
+      <Provider store={store}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <GlobalStyles />
+        <Router />
+      </Provider>
     </QueryClientProvider>
   );
 };
