@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import * as Styled from './style';
 import { useSelector } from 'react-redux';
-import Button from '../common/Button';
+import Button from '../common/button/Button';
 
 export const SystemModal = ({ confirmAndClose, closeModal }) => {
   useEffect(() => {
@@ -44,7 +44,7 @@ export const TimerModal = ({ setIsModalOpen, text, subText }) => {
   });
 
   return createPortal(
-    <Styled.ModalLayout >
+    <Styled.ModalLayout>
       <Styled.ModalBox>
         <Styled.ModalParagraph>{text}</Styled.ModalParagraph>
         <Styled.ModalSpan>{subText}</Styled.ModalSpan>

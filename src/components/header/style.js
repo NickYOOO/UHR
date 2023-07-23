@@ -18,7 +18,7 @@ export const TitleBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   & > h1 {
     font-size: 24px;
     color: #fff;
