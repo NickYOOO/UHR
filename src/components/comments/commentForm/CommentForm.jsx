@@ -57,7 +57,19 @@ const CommentForm = ({ hId, hName }) => {
     return <Loading />;
   }
 
+  const isCommentEmpty = () => {
+    return comment.trim() === '';
+  };
+
+  const isEditCommentEmpty = () => {
+    return editContent.trim() === '';
+  };
+
   const handleSubmit = async () => {
+    if (isCommentEmpty()) {
+      return;
+    }
+
     const uniqueId = uuidv4();
 
     const newComment = {
@@ -75,6 +87,10 @@ const CommentForm = ({ hId, hName }) => {
   };
 
   const handleEditComment = async () => {
+    if (isEditCommentEmpty()) {
+      return;
+    }
+
     const updatedComment = {
       ...selectedComment,
       content: editContent,
@@ -113,7 +129,9 @@ const CommentForm = ({ hId, hName }) => {
           value={comment}
           onChange={e => setComment(e.target.value)}
         />
-        <Style.CommentButton onClick={handleSubmit}>등록</Style.CommentButton>
+        <Style.CommentButton onClick={handleSubmit} disabled={isCommentEmpty()}>
+          등록
+        </Style.CommentButton>
       </Style.CommentFormContainer>
       <CommentList {...listProps} />
       {editMode && (
@@ -126,7 +144,9 @@ const CommentForm = ({ hId, hName }) => {
             value={editContent}
             onChange={e => setEditContent(e.target.value)}
           />
-          <Style.CommentButton onClick={handleEditComment}>수정 완료</Style.CommentButton>
+          <Style.CommentButton onClick={handleEditComment} disabled={isEditCommentEmpty()}>
+            수정 완료
+          </Style.CommentButton>
           <Style.CommentButton onClick={hideEditMode}>취소</Style.CommentButton>
         </Style.CommentFormContainer>
       )}
