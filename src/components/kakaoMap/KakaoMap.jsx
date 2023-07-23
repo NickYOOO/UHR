@@ -26,31 +26,33 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
   }, []);
 
   return (
-    <Map
-      center={center.center}
-      isPanto={center.isPanto}
-      style={{ width: '100%', height: '400px' }}
-      zoomable={false}
-      onCenterChanged={map =>
-        setCenter({
-          level: map.getLevel(),
-          center: {
-            lat: map.getCenter().getLat(),
-            lng: map.getCenter().getLng(),
-          },
-        })
-      }
-    >
-      <ZoomControl position={window.kakao.maps.ControlPosition.BOTTOMRIGHT} />
-      <MapTypeControl position={window.kakao.maps.ControlPosition.TOPRIGHT} />
-      <MapMarker
-        position={{ lat, lng }}
-        onMouseOver={() => setIsOpen(true)}
-        onMouseOut={() => setIsOpen(false)}
+    <section>
+      <Map
+        center={center.center}
+        isPanto={center.isPanto}
+        style={{ width: '100%', height: '400px' }}
+        zoomable={false}
+        onCenterChanged={map =>
+          setCenter({
+            level: map.getLevel(),
+            center: {
+              lat: map.getCenter().getLat(),
+              lng: map.getCenter().getLng(),
+            },
+          })
+        }
       >
-        {isOpen && <Style.TargetImg src={imageUrl} />}
-      </MapMarker>
-    </Map>
+        <ZoomControl position={window.kakao.maps.ControlPosition.BOTTOMRIGHT} />
+        <MapTypeControl position={window.kakao.maps.ControlPosition.TOPRIGHT} />
+        <MapMarker
+          position={{ lat, lng }}
+          onMouseOver={() => setIsOpen(true)}
+          onMouseOut={() => setIsOpen(false)}
+        >
+          {isOpen && <Style.TargetImg src={imageUrl} />}
+        </MapMarker>
+      </Map>
+    </section>
   );
 };
 

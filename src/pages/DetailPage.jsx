@@ -9,12 +9,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getHeritageInfoById } from '../api/heritage';
 import Loading from '../components/loading/Loading';
 
-const MainBoxLayout = styled.div`
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
-`;
-
 function DetailPage() {
   const param = useParams();
   const { data, isLoading } = useQuery(
@@ -41,9 +35,9 @@ function DetailPage() {
   return (
     <MainBoxLayout>
       <HeritageDetail information={data.infoBody} />
-      {latitude.value != 0 && longitude.value != 0 ? (
+      {latitude.value !== '0' && longitude.value !== '0' && (
         <KakaoMap latitude={latitude.value} longitude={longitude.value} imageUrl={imageUrl.value} />
-      ) : null}
+      )}
       <HeritageImages {...params} id={param.id} />
       <CommentForm
         hId={data.infoHead[3].value}
@@ -54,3 +48,9 @@ function DetailPage() {
 }
 
 export default DetailPage;
+
+const MainBoxLayout = styled.main`
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+`;

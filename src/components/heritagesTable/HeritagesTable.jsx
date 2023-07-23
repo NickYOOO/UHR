@@ -1,7 +1,6 @@
 import React from 'react';
 import * as Style from './style';
 import { useNavigate } from 'react-router';
-
 import { useSelector } from 'react-redux';
 
 export default function HeritagesTable() {

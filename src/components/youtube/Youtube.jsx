@@ -27,28 +27,30 @@ export default function Youtube() {
   };
 
   return (
-    <Layout>
-      <Styled.YoutubeSection>
-        <h2>유튜브로 전하는 문화재 소식</h2>
-        <Styled.YoutubeWrapperBox>
-          <Styled.YoutubeBox>
-            <YouTube
-              style={youtubeStyle}
-              videoId="uXeXWKmiOXA"
-              opts={youtubeOption}
-              onEnd={youtubeEndFn}
-            />
-          </Styled.YoutubeBox>
-          <Styled.YoutubeBox>
-            <YouTube
-              style={youtubeStyle}
-              videoId="KWkexiYANw4"
-              opts={youtubeOption}
-              onEnd={youtubeEndFn}
-            />
-          </Styled.YoutubeBox>
-        </Styled.YoutubeWrapperBox>
-      </Styled.YoutubeSection>
-    </Layout>
+    <section>
+      <Layout>
+        <Styled.YoutubeSection>
+          <h2>유튜브로 전하는 문화재 소식</h2>
+          <Styled.YoutubeWrapperBox>
+            <Styled.YoutubeBox>
+              <YouTube
+                style={youtubeStyle}
+                videoId="uXeXWKmiOXA"
+                opts={youtubeOption}
+                onEnd={youtubeEndFn}
+              />
+            </Styled.YoutubeBox>
+            <Styled.YoutubeBox>
+              <YouTube
+                style={youtubeStyle}
+                videoId="KWkexiYANw4"
+                opts={youtubeOption}
+                onEnd={youtubeEndFn}
+              />
+            </Styled.YoutubeBox>
+          </Styled.YoutubeWrapperBox>
+        </Styled.YoutubeSection>
+      </Layout>
+    </section>
   );
 }
