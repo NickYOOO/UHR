@@ -1,13 +1,6 @@
-import React from 'react';
 import { css, styled } from 'styled-components';
 
-const Button = ({ children, ...props }) => {
-  return <Btn {...props}>{children}</Btn>;
-};
-
-export default Button;
-
-const Btn = styled.button`
+export const Button = styled.button`
   cursor: pointer;
   text-align: center;
   vertical-align: middle;

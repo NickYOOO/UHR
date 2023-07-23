@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import InputWithLabel from '../common/input/InputWithLabel';
-import Button from '../common/Button';
+import Button from '../common/button/Button';
 import * as Styled from './style';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';

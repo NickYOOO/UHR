@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import useFormValidation from '../../hooks/useFormValidation';
 import InputWithLabel from '../common/input/InputWithLabel';
-import Button from '../common/Button';
+import Button from '../common/button/Button';
 import * as Styled from './style';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, db, signUpWithFB } from '../../api/firebase';
+import { db, signUpWithFB } from '../../api/firebase';
 import { doc, setDoc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import useSystemModal from '../../hooks/useSystemModal';
 import { useSelector } from 'react-redux';
 import { SystemModal, TimerModal } from '../systemModal/SystemModal';
@@ -40,7 +39,7 @@ function SignUp() {
         <Styled.SignUpForm onSubmit={onClickSignUpHandler}>
           <h2>회원가입</h2>
           <InputWithLabel
-            w={100}
+            w={110}
             name="displayName"
             type="text"
             value={formState.displayName}
@@ -53,7 +52,7 @@ function SignUp() {
             {validationMsg.displayNameMsg}
           </Styled.ValidationMessage>
           <InputWithLabel
-            w={100}
+            w={110}
             name="email"
             type="email"
             value={formState.email}
@@ -66,7 +65,7 @@ function SignUp() {
             {validationMsg.emailMsg}
           </Styled.ValidationMessage>
           <InputWithLabel
-            w={100}
+            w={110}
             name="pwd"
             type="password"
             value={formState.pwd}
@@ -79,7 +78,7 @@ function SignUp() {
             {validationMsg.pwdMsg}
           </Styled.ValidationMessage>
           <InputWithLabel
-            w={100}
+            w={110}
             name="confirmPwd"
             type="password"
             value={formState.confirmPwd}

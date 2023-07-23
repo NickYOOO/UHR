@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from '../select/Select';
 import InputWithLabel from '../input/InputWithLabel';
-import Button from '../Button';
+import Button from '../button/Button';
 import * as Styled from './style';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -18,7 +18,8 @@ export default function Search({ bg }) {
   const [heritageName, setHeritageName] = useState('');
   const dispatch = useDispatch();
 
-  const serchButtonClickHandler = () => {
+  const onSubmitSearchHandler = e => {
+    e.preventDefault();
     navigate(`/list/${provinceId}&${regionId}&${heritageName}`, {
       state: {
         ccbaCtcd: provinceId,
@@ -32,7 +33,7 @@ export default function Search({ bg }) {
   };
 
   return (
-    <Styled.SearchBox bg={bg}>
+    <Styled.SearchBox bg={bg} onSubmit={onSubmitSearchHandler}>
       <Select onSelectProvince={setProvinceId} onSelectRegion={setRegionId} />
       <Styled.InputWithLabelBox>
         <InputWithLabel
@@ -43,7 +44,7 @@ export default function Search({ bg }) {
         >
           문화재명
         </InputWithLabel>
-        <Button onClick={serchButtonClickHandler} w="80px" h="39px">
+        <Button type={'submit'} w="80px" h="39px">
           검색
         </Button>
       </Styled.InputWithLabelBox>

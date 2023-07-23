@@ -19,8 +19,8 @@ export const SignUpForm = styled.form`
   align-items: center;
   gap: 8px;
   width: 430px;
-  margin: 40px 0 30px 0;
-  padding: 0px 30px 0px 30px;
+  margin: 40px 0 30px;
+  padding: 0px 20px 0px;
 
   & > h2 {
     display: flex;
