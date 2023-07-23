@@ -5,6 +5,7 @@ export const CommentListContainer = styled.div`
 `;
 
 export const CommentItem = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #082141;
