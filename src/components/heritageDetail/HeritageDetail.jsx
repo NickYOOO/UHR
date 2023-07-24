@@ -2,6 +2,7 @@ import React from 'react';
 import * as Style from './style';
 
 function HeritageDetail({ information }) {
+  let content = information[19].value.replace(/\<b\>|\<\/b\>|\>/g, '');
   return (
     <Style.HeritageDetailLayout>
       <Style.HeritageDetailBox>
@@ -50,7 +51,9 @@ function HeritageDetail({ information }) {
           </tbody>
         </Style.HeritageDetailTable>
       </Style.HeritageDetailBox>
-      <Style.HeritageDetailParagraph>{information[19].value}</Style.HeritageDetailParagraph>
+      <Style.HeritageDetailParagraph>
+        {!content ? '정보가 없습니다.' : content}
+      </Style.HeritageDetailParagraph>
     </Style.HeritageDetailLayout>
   );
 }

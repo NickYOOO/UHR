@@ -31,11 +31,11 @@ export default function HeritagesTable() {
             {heritageArr.map(item => {
               const key = item.children[1].value; // no(key)
               const num = item.children[0].value; // sn
-              const kind = item.children[2].value.replace(/ >/g, ''); // ccmaName
-              const nameKr = item.children[4].value.replace(/ >/g, ''); // ccbaMnm1
-              const nameCh = item.children[5].value.replace(/ >/g, ''); // ccbaMnm2
-              const city1 = item.children[6].value.replace(/ >/g, ''); // ccbaCtcdNm
-              const city2 = item.children[7].value.replace(/ >/g, ''); // ccsiName
+              const kind = item.children[2].value.replace(/>/g, '').trim(); // ccmaName
+              const nameKr = item.children[4].value.replace(/>/g, '').trim(); // ccbaMnm1
+              const nameCh = item.children[5].value.replace(/>/g, '').trim(); // ccbaMnm2
+              const city1 = item.children[6].value.replace(/>/g, '').trim(); // ccbaCtcdNm
+              const city2 = item.children[7].value.replace(/>/g, '').trim(); // ccsiName
 
               const ccbaCpno = item.children[13].value;
 
@@ -43,11 +43,15 @@ export default function HeritagesTable() {
                 <Style.TableRow key={key} onClick={() => handleOnClickTr(ccbaCpno)}>
                   <Style.TableCell>{num}</Style.TableCell>
                   <Style.TableCell>{kind}</Style.TableCell>
+                  {nameCh !== '>' ? (
+                    <Style.TableCell>
+                      {nameKr}({nameCh})
+                    </Style.TableCell>
+                  ) : (
+                    <Style.TableCell>{nameKr}</Style.TableCell>
+                  )}
                   <Style.TableCell>
-                    {nameKr}({nameCh})
-                  </Style.TableCell>
-                  <Style.TableCell>
-                    {city1} / {city2}
+                    {city1} {city2 && `/ ${city2}`}
                   </Style.TableCell>
                 </Style.TableRow>
               );
