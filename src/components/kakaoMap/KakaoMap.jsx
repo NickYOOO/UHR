@@ -28,6 +28,7 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
   return (
     <section>
       <Map
+        level={4}
         center={center.center}
         isPanto={center.isPanto}
         style={{ width: '100%', height: '400px' }}
