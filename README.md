@@ -1,4 +1,7 @@
-## 당신의 문화 유산 답사기 (UHR : Ur Heritage Record)
+
+![Group 149](https://github.com/NickYOOO/UHR/assets/108923582/d2ab271e-8fd4-40f0-8680-f56679979653)
+
+##  (UHR : Ur Heritage Record)
 
 아름다운 우리 문화유산 이야기, 문화재에 대한 당신만의 답사기를 만들어가세요.
 
@@ -14,6 +17,28 @@
 
 
 ---
+## 페이지 구성
+### 로그인
+![로그인](https://github.com/NickYOOO/UHR/assets/108923582/09533469-540a-4fc7-8423-916fd2d1abd4)
+
+### 회원가입
+![회원가입](https://github.com/NickYOOO/UHR/assets/108923582/1a2986ef-69be-4eb8-a0dd-7c02f68da996)
+
+### 메인페이지
+![메인12](https://github.com/NickYOOO/UHR/assets/108923582/753a648b-69b0-4a14-880d-83e1c3f0ca04)
+
+### 리스트페이지
+![리스트페이지](https://github.com/NickYOOO/UHR/assets/108923582/e554e5df-44a2-4a64-bf82-f5a7326bd71f)
+
+### 디테일페이지
+
+### 스피너
+![스피너](https://github.com/NickYOOO/UHR/assets/108923582/1f7c21e1-c383-4024-a438-7f2dfba1d24d)
+
+### 404페이지
+![404](https://github.com/NickYOOO/UHR/assets/108923582/af153bdf-90ef-44f4-a6be-7f5504b789d5)
+---
+
 ## 깃 플로우 전략
 
 - main
