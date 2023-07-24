@@ -12,8 +12,9 @@
 | 임지영 | 최윤서 | 노진철 | 유지완 | 전수정 |
 
 ---
-## 시연 영상
-[유튜브 링크](https://www.youtube.com/watch?v=DuDZBfDEnB8)
+## 시연 영상 (YOUTUBE)
+
+[![Video Label](http://img.youtube.com/vi/DuDZBfDEnB8/0.jpg)](https://youtu.be/watch?v=DuDZBfDEnB8)
 
 
 ---
