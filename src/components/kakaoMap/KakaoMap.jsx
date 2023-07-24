@@ -31,7 +31,7 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
         level={4}
         center={center.center}
         isPanto={center.isPanto}
-        style={{ width: '100%', height: '400px' }}
+        style={{ width: '100%', height: '600px' }}
         zoomable={false}
         onCenterChanged={map =>
           setCenter({
@@ -50,7 +50,11 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
           onMouseOver={() => setIsOpen(true)}
           onMouseOut={() => setIsOpen(false)}
         >
-          {isOpen && <Style.TargetImg src={imageUrl} />}
+          {isOpen && (
+            <div style={{ position: 'absolute', top: '-125px' }}>
+              <Style.TargetImg src={imageUrl} />
+            </div>
+          )}
         </MapMarker>
       </Map>
     </section>

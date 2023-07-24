@@ -6,7 +6,7 @@ export const TargetInfo = styled.div`
 `;
 
 export const TargetImg = styled.img`
-  object-fit: contain;
+  object-fit: cover;
   width: 150px;
-  height: 100%;
+  max-height: 150px;
 `;
