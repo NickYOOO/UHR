@@ -35,7 +35,7 @@ export default function HeritagesTable() {
               const nameKr = item.children[4].value.replace(/>/g, '').trim(); // ccbaMnm1
               const nameCh = item.children[5].value.replace(/>/g, '').trim(); // ccbaMnm2
               const city1 = item.children[6].value.replace(/>/g, '').trim(); // ccbaCtcdNm
-              const city2 = item.children[7].value.replace(/>/g, '').trim(); // ccsiName
+              const city2 = item.children[7].value.replace(/>|./g, '').trim(); // ccsiName
 
               const ccbaCpno = item.children[13].value;
 
@@ -43,7 +43,7 @@ export default function HeritagesTable() {
                 <Style.TableRow key={key} onClick={() => handleOnClickTr(ccbaCpno)}>
                   <Style.TableCell>{num}</Style.TableCell>
                   <Style.TableCell>{kind}</Style.TableCell>
-                  {nameCh !== '>' ? (
+                  {nameCh ? (
                     <Style.TableCell>
                       {nameKr}({nameCh})
                     </Style.TableCell>
