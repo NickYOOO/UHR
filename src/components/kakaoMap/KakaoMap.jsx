@@ -51,7 +51,7 @@ const KakaoMap = ({ latitude, longitude, imageUrl }) => {
           onMouseOut={() => setIsOpen(false)}
         >
           {isOpen && (
-            <div style={{ position: 'absolute', top: '-125px' }}>
+            <div style={{ position: 'absolute', bottom: '-25px', left: '-1px' }}>
               <Style.TargetImg src={imageUrl} />
             </div>
           )}

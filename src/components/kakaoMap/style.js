@@ -8,5 +8,5 @@ export const TargetInfo = styled.div`
 export const TargetImg = styled.img`
   object-fit: cover;
   width: 150px;
-  max-height: 150px;
+  height: 100%;
 `;
