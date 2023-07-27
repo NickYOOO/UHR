@@ -28,6 +28,7 @@ export const FullPageBox = styled.div`
     font-weight: 500;
     color: #fff;
     margin-top: 40px;
+    cursor: pointer;
   }
 
   /* @keyframes fadeout {
