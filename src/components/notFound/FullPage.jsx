@@ -10,7 +10,7 @@ function FullPage() {
   return (
     <Styled.FullPageBox onClick={goBack}>
       <h2>알 수 없는 페이지 요청입니다.</h2>
-      <h3>3초 뒤 메인페이지로 이동 합니다.</h3>
+      <h3>3초 뒤 메인페이지로 이동합니다.</h3>
       <p onClick={goBack}>바로 이동하기</p>
     </Styled.FullPageBox>
   );
