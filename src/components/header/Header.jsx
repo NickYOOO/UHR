@@ -42,7 +42,7 @@ function Header() {
       <Styled.UserBox>
         {isLoggedIn ? (
           <>
-            <Link to={`/mypage`}>{userName}</Link>
+            <Link to={`/mypage`}>{`${userName} 님`}</Link>
             <Link onClick={handleLogout}>로그아웃</Link>
           </>
         ) : (
