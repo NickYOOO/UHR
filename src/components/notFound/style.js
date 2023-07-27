@@ -23,6 +23,13 @@ export const FullPageBox = styled.div`
     color: #fff;
   }
 
+  & > p {
+    font-size: 34px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 40px;
+  }
+
   /* @keyframes fadeout {
     0% {
       opacity: 1;
